@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap'); /* Montserrat */ 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap'); /* Nunito */ 
+
+
+:root {
+
+    /* Original Color Palette */
+    --primary-col-org: #4A4E69;
+    --secondary-col-org: #9A8C98;
+    --highlight-col-org: #C9ADA7;
+    --background-col-org: #FFFFFF;
+    --buttons-col-org: #4A4E69;
+    --text-col-org: #4A4E69;
+    --textII-col-org: #3A3A3A;
+    
+    /* Dark Color Palette */
+    --primary-col-dark: #F2E9E4;
+    --secondary-col-dark: #C9ADA7;
+    --highlight-col-dark: #9A8C98;
+    --background-col-dark: #22223B;
+    --buttons-col-dark: #9A8C98;
+    --text-col-dark: #9A8C98;
+
+    /*#region Font Variables */
+        --font-montserrat: 'Montserrat', sans-serif;
+        --font-nunito: 'Nunito', sans-serif;
+
+        /* ===============
+            Heading Styles
+            ============== */
+            --ff-weight-heading: 800;
+            --ff-size-heading: 190px;
+            --ff-size-heading-tab: 15px;
+
+        /* ===============
+            SubHeading Styles
+            ============== */
+            --ff-weight-subheading: 700;
+            --ff-size-subheading: 25px;
+            --ff-size-subheading-tab: 20px;
+
+
+        /* ===============
+            Body Styles
+            ============== */
+            --ff-weight-body: 500;
+            --ff-weight-bodyii: 400;
+            --ff-size-body: 10px;
+
+        /* ===============
+            Buttons Styles
+            ============== */
+            --ff-weight-buttons: 700;
+            --ff-weight-buttonsii: 500;
+            --ff-size-buttons: 20px;
+
+        /* ===============
+            Buttons Styles
+            ============== */
+            --ff-weight-note: 600;
+            --ff-weight-noteii: 500;
+            --ff-size-note: 15px;
+
+    /*#endregion Font Variables */
+}
+
