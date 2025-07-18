@@ -64,3 +64,130 @@
     /*#endregion Font Variables */
 }
 
+/*#region Animation Flow */
+@keyframes fadeInMenu {
+    0% {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOutMenu {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+}
+/*#endregion Animation Flow */
+
+
+
+/*#region Header */
+.logo_head {
+    width: 76px;
+    height: 76px;
+}
+
+.logo_head_mob {
+    width: 60px;
+    height: 60px;
+}
+/*#endregion Header */
+
+
+/*#region Responsive */
+    /*#region Header Mobile */
+    @media (max-width: 767px) {
+    .general_head {
+        display: none;
+    }
+
+    .mobile_head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 3%;
+        left: 50%;                 
+        transform: translateX(-50%); 
+        width: 90%;      
+        max-width: 412px;
+        z-index: 50;
+        padding-block: 1rem;
+        background-color: var(--background-col-org);
+    }
+
+    .logo_head_mob {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .burger_head {
+        font-size: 30px;
+        background-color: none;
+    }
+
+    .burger_head_close {
+        font-size: 30px;
+        font-weight: var(--ff-weight-buttons);
+        background-color: none;
+        position: fixed;
+        top: 3rem;
+        right: 2rem;
+        font-size: 2rem;
+        background: none;
+        border: none;
+        color: var(--buttons-col-dark);
+        cursor: pointer;
+        z-index: 200;
+    }
+
+    .burger_menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        
+        
+        background-color: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(8px);
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5rem;
+        
+        z-index: 100;
+    }
+
+    .burger_menu.fadeIn {
+        animation: fadeInMenu 800ms ease-in forwards;
+    }
+
+    .burger_menu.fadeOut {
+        animation: fadeOutMenu 800ms ease-in forwards;
+    }
+
+    .mob_btns {
+        font-size: var(--ff-size-buttons);
+        text-decoration: none;
+        color: var(--buttons-col-org);
+        font-family: var(--font-nunito);
+        text-transform: uppercase;
+    }
+
+    }
+    /*#endregion Header Mobile */
+
+    
+/*#endregion Responsive */
