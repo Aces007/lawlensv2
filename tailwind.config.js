@@ -5,6 +5,12 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}", // covers all files inside /src, including pages/components
   ],
   theme: {
+    screens: {
+      sm: "412px",    // small phones
+      md: "768px",    // tablets
+      lg: "1024px",   // laptops
+      xl: "1280px",   // desktops
+    },
     extend: {
       colors: {
         // Original Color Palette
@@ -35,7 +41,7 @@ module.exports = {
         subheading: "25px",
         subheadingTab: "20px",
         body: "10px",
-        buttons: "20px",
+        buttons: "25px",
         note: "15px",
       },
       fontWeight: {
@@ -47,7 +53,7 @@ module.exports = {
         buttons2: "500",
         note: "600",
         note2: "500",
-      }
+      },
     },
   },
   plugins: [],
