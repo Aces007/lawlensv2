@@ -47,7 +47,7 @@ const NavigationHeader = () => {
 
       {/* Mobile Header */}
       <div className="mobile_head md:hidden">
-        <img src={logo} alt="logo" className="logo_head_mob" />
+        <Link to="./"><img src={logo} alt="logo" className="logo_head_mob" /></Link>
         <button className="burger_head" onClick={handleToggleMenu}>☰</button>
       </div>
 

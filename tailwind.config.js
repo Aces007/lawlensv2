@@ -19,8 +19,8 @@ module.exports = {
         highlight: "#C9ADA7",
         background: "#FFFFFF",
         button: "#4A4E69",
-        text: "#4A4E69",
-        text2: "#3A3A3A",
+        text_content: "#4A4E69",
+        text_content2: "#3A3A3A",
 
         // Dark Color Palette
         "dark-primary": "#F2E9E4",
@@ -36,12 +36,13 @@ module.exports = {
       },
       fontSize: {
         heroLogo: "190px",
-        heading: "50px",
+        heading: "230px",
         headingAbout: "50px",
+        subheadingHero: "40px",
         subheadingAbout: "25px",
         portBtnAbout: "40px",
         body: "10px",
-        buttons: "25px",
+        buttons: "20px",
         note: "15px",
       },
       fontWeight: {
