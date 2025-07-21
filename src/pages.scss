@@ -31,6 +31,7 @@
             --ff-weight-heading: 800;
             --ff-size-heading: 190px;
             --ff-size-heading-tab: 15px;
+            --ff-size-heading-mob: 30px;
 
         /* ===============
             SubHeading Styles
@@ -46,6 +47,7 @@
             --ff-weight-body: 500;
             --ff-weight-bodyii: 400;
             --ff-size-body: 10px;
+            --ff-size-body-mob: 20px;
 
         /* ===============
             Buttons Styles
@@ -102,6 +104,20 @@
 }
 /*#endregion Header */
 
+/*#region Hero */
+.hero_img {
+    position: absolute;
+    top: 70px;
+    right: 215px;
+    width: 800px;
+    height: 810px;
+    opacity: 90%;
+}
+
+.hero_navlinks {
+    gap: 500px;
+}
+/*#endregion Hero */
 
 /*#region About */
 .aboutImage {
@@ -110,91 +126,174 @@
 }
 /*#endregion About */
 
+
 /*#region Responsive */
-    /*#region Header Mobile */
+    
     @media (max-width: 767px) {
-    .general_head {
-        display: none;
-    }
+        /*#region Header Mobile */
+        .general_head {
+            display: none;
+        }
 
-    .mobile_head {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: fixed;
-        top: 3%;
-        left: 50%;                 
-        transform: translateX(-50%); 
-        width: 90%;      
-        max-width: 412px;
-        z-index: 50;
-        padding-block: 1rem;
-        background-color: var(--background-col-org);
-    }
+        .mobile_head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 3%;
+            left: 50%;                 
+            transform: translateX(-50%); 
+            width: 90%;      
+            max-width: 412px;
+            z-index: 50;
+            padding-block: 1rem;
+            background-color: var(--background-col-org);
+        }
 
-    .logo_head_mob {
-        width: 60px;
-        height: 60px;
-    }
-    
-    .burger_head {
-        font-size: 30px;
-        background-color: none;
-    }
-
-    .burger_head_close {
-        font-size: 30px;
-        font-weight: var(--ff-weight-buttons);
-        background-color: none;
-        position: fixed;
-        top: 3rem;
-        right: 2rem;
-        font-size: 2rem;
-        background: none;
-        border: none;
-        color: var(--buttons-col-dark);
-        cursor: pointer;
-        z-index: 200;
-    }
-
-    .burger_menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
+        .logo_head_mob {
+            width: 60px;
+            height: 60px;
+        }
         
+        .burger_head {
+            font-size: 30px;
+            background-color: none;
+        }
+
+        .burger_head_close {
+            font-size: 30px;
+            font-weight: var(--ff-weight-buttons);
+            background-color: none;
+            position: fixed;
+            top: 3rem;
+            right: 2rem;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: var(--buttons-col-dark);
+            cursor: pointer;
+            z-index: 200;
+        }
+
+        .burger_menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            
+            
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5rem;
+            
+            z-index: 100;
+        }
+
+        .burger_menu.fadeIn {
+            animation: fadeInMenu 800ms ease-in forwards;
+        }
+
+        .burger_menu.fadeOut {
+            animation: fadeOutMenu 800ms ease-in forwards;
+        }
+
+        .mob_btns {
+            font-size: var(--ff-size-buttons);
+            text-decoration: none;
+            color: var(--buttons-col-org);
+            font-family: var(--font-nunito);
+            text-transform: uppercase;
+        }
+        /*#endregion Header Mobile */
+
+        /*#region About */
+        .about_cont {
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.5rem;
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .about_content {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .aboutImage {
+            position: absolute;
+            width: 500px;
+            height: 900px;
+            top: 10%;
+            right: 0%;
+            opacity: 10%;
+            z-index: -1;
+        }
+
+        .about_heading {
+            font-size: var(--ff-size-heading-mob);
+        }
+
+        .about_txtContent {
+            font-size: var(--ff-size-body-mob);
+            line-height: 1.5;
+            width: 300px;
+        }
+
+        .port_linkWrapper {
+            flex-direction: row;
+            justify-content: space-between;
+            position: relative;
+            right: 0;
+            margin-top: 1.5rem;
+
+            .port_btn {
+                position: relative;
+                rotate: -90deg;
+                font-size: var(--ff-size-subheading);
+                width: max-content;
+                right: 0;
+            }
+
+            img {
+                width: 35px;
+                height: 35px;
+                margin-left: 0.5rem;
+                rotate: 90deg;
+            }
+        }
         
-        background-color: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(8px);
-        
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 5rem;
-        
-        z-index: 100;
+        /*#endregion About */
     }
 
-    .burger_menu.fadeIn {
-        animation: fadeInMenu 800ms ease-in forwards;
+    @media (max-width: 1280px) {
+        .hero_img {
+            position: absolute;
+            top: 90px;
+            right: 180px;
+            width: 800px;
+            height: 825px;
+        }
     }
 
-    .burger_menu.fadeOut {
-        animation: fadeOutMenu 800ms ease-in forwards;
-    }
+    @media (min-width: 1920px) {
+        .hero_img {
+            position: absolute;
+            top: 120px;
+            right: 500px;
+            width: 800px;
+            height: 1100px;
+        }
 
-    .mob_btns {
-        font-size: var(--ff-size-buttons);
-        text-decoration: none;
-        color: var(--buttons-col-org);
-        font-family: var(--font-nunito);
-        text-transform: uppercase;
+        .hero_navlinks {
+            position: relative;
+            top: 100px;
+        }
     }
-
-    }
-    /*#endregion Header Mobile */
-
-    
 /*#endregion Responsive */
