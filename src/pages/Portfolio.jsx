@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const Portfolio = () => {
     const projects = [
         {
@@ -90,26 +92,79 @@ const Portfolio = () => {
         },
     ]
 
+    const [showDates, setShowDates] = useState({});
+    const [showTech, setShowTech] = useState({});
+
+    const toggleDates = (index) => {
+        setShowDates((prev) => ({...prev, [index]: !prev[index]}));
+    };
+    
+    const toggleTech = (index) => {
+        setShowTech((prev) => ({...prev, [index]: !prev[index]}));
+    };    
+    
+
+
     return (
         <div className="flex flex-col items-center justify-center mt-36 mb-20 gap-8">
-            <h1 className="font-montserrat font-extrabold text-headingPort uppercase text-text_content2">Work That Works</h1>
+            <h1 className="port_header font-montserrat font-extrabold text-headingPort uppercase text-text_content2">Work That Works</h1>
 
-            <div className="flex flex-col items-center justify-center gap-20">
+            <div className="projects_cont flex flex-col items-center justify-center gap-20">
                 {projects.map((project, idx) => (
-                    <div key={idx} className="port_cont flex flex-col justify-around gap-8">
-                        <div className="flex flex-row items-center justify-around gap-80">
+                    <div key={idx} className="projects_content flex flex-col justify-around gap-8">
+
+                        {/* ---- Title | Date Header ---- */}
+                        <div className="flex flex-row items-center justify-around gap-80 sm:hidden md:flex flex-row items-center justify-around gap-80">
                             <p className="font-nunito font-regular text-note uppercase text-text_content2">{project.dateStart}</p>
                             <h1 className="font-nunito font-bold text-subheadingPort uppercase text-text_content2">{project.title}</h1>
                             <p className="font-nunito font-regular text-note uppercase text-text_content2">{project.dateEnd}</p>
                         </div>
+
+                        <div className="flex flex-row items-center justify-around gap-4">
+                            {/* ---- Date Header Android ---- */}
+                            <div className="projects_dateDrop md:hidden">
+                                <button onClick={() => toggleDates(idx)} className="showDatesBtn">
+                                    {showDates[idx] ? "Hide Dates" : "Show Dates"}
+                                </button>
+                                {showDates[idx] && (
+                                    <div className="flex flex-row gap-4 font-nunito text-sm text-text_content2">
+                                        <p>{project.dateStart}</p>
+                                        <p>→</p>
+                                        <p>{project.dateEnd}</p>
+                                    </div>
+                                )}
+                            </div>
+
+                            <h1 className="font-nunito font-bold text-subheadingPortMob uppercase text-text_content2 md:hidden">{project.title}</h1>
+
+                            {/* ---- Tech Dropdown Android ---- */}
+                            <div className="md:hidden">
+                                <button onClick={() => toggleTech(idx)} className="showTechBtn">
+                                    {showTech[idx] ? "Hide Tech Stack" : "Show Tech Stach"}
+                                </button>
+                                {showTech[idx] && (
+                                    <div className="flex flex-wrap justify-center gap-4">
+                                        {project.tech.map((tech, i) => (
+                                            <span key={i} className="font-montserrat font-semibold text-text_content2 text-xs bg-gray-100 rounded px-2 py-1">
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+
+
                         <div className="flex flex-row items-center justify-between">
                             <img src={project.image1} alt={`${project.title} 1`} className="port_previews"/>
                             <img src={project.image2} alt={`${project.title} 2`} className="port_previews"/>
                         </div>
-                        <div className="flex items-center justify-center gap-60">
-                        {project.tech.map((tech, i) => (
-                            <span key={i} className="font-montserrat font-semibold text-text_content2">{tech}</span>
-                        ))}
+
+
+                        <div className="flex items-center justify-center gap-60 sm:hidden md:flex items-center justify-center gap-60">
+                            {project.tech.map((tech, i) => (
+                                <span key={i} className="font-montserrat font-semibold text-text_content2">{tech}</span>
+                            ))}
                         </div>
                     </div>
                     ))}
