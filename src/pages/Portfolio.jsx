@@ -67,7 +67,7 @@ const Portfolio = () => {
             tech: ['NEXT JS', 'Tailwind CSS', 'Thesis Database', 'Open University']
         },
         {
-            title: 'Transient Book App',
+            title: 'Transient',
             dateStart: 'May 2025',
             dateEnd: 'June 2025',
             image1: './port_content/transient/TR1.png',
@@ -106,7 +106,7 @@ const Portfolio = () => {
 
 
     return (
-        <div className="flex flex-col items-center justify-center mt-36 mb-20 gap-8">
+        <div className="flex flex-col items-center justify-center mt-36 mb-20 gap-8 sm:gap-20">
             <h1 className="port_header font-montserrat font-extrabold text-headingPort uppercase text-text_content2">Work That Works</h1>
 
             <div className="projects_cont flex flex-col items-center justify-center gap-20">
@@ -122,7 +122,7 @@ const Portfolio = () => {
 
                         <div className="flex flex-row items-center justify-around gap-4">
                             {/* ---- Date Header Android ---- */}
-                            <div className="projects_dateDrop md:hidden">
+                            <div className="md:hidden">
                                 <button onClick={() => toggleDates(idx)} className="showDatesBtn">
                                     {showDates[idx] ? "Hide Dates" : "Show Dates"}
                                 </button>
@@ -135,7 +135,7 @@ const Portfolio = () => {
                                 )}
                             </div>
 
-                            <h1 className="font-nunito font-bold text-subheadingPortMob uppercase text-text_content2 md:hidden">{project.title}</h1>
+                            <h1 className="font-nunito font-extrabold text-subheadingPortMob uppercase text-text_content2 md:hidden">{project.title}</h1>
 
                             {/* ---- Tech Dropdown Android ---- */}
                             <div className="md:hidden">
@@ -155,7 +155,7 @@ const Portfolio = () => {
                         </div>
 
 
-                        <div className="flex flex-row items-center justify-between">
+                        <div className="flex flex-row items-center justify-between sm:gap-2">
                             <img src={project.image1} alt={`${project.title} 1`} className="port_previews"/>
                             <img src={project.image2} alt={`${project.title} 2`} className="port_previews"/>
                         </div>

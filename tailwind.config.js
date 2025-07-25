@@ -42,7 +42,7 @@ module.exports = {
         subheadingHero: "40px",
         subheadingAbout: "25px",
         subheadingPort: "40px",
-        subheadingPortMob: "20px",
+        subheadingPortMob: "16px",
         portBtnAbout: "40px",
         body: "10px",
         buttons: "20px",
