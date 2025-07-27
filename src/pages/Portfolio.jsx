@@ -90,6 +90,14 @@ const Portfolio = () => {
             image2: './port_content/g_tara/GT2.png',
             tech: ['React Native', 'FIGMA Design', 'Tailwind', 'Guitar Learning App']
         },
+        {
+            title: 'Nutridash',
+            dateStart: 'November 2023',
+            dateEnd: 'March 2024',
+            image1: './port_content/nutridash/nutri1.jpg',
+            image2: './port_content/nutridash/nutri2.jpg',
+            tech: ['PHP', 'Tailwind CSS', 'Object Oriented Programming', 'Calorie Tracker']
+        },
     ]
 
     const [showDates, setShowDates] = useState({});
