@@ -11,6 +11,22 @@ const Portfolio = () => {
             tech: ['WordPress', 'Vanilla HTML & CSS', 'UI/UX Design', 'Personal Website']
         },
         {
+            title: 'Hardware Sugar',
+            dateStart: 'September 2023',
+            dateEnd: 'October 2023',
+            image1: './port_content/hardware_sugar/HWS1.png',
+            image2: './port_content/hardware_sugar/HWS2.png',
+            tech: ['Wordpress', 'Figma Design', 'PC Store', 'Business Website']
+        },
+        {
+            title: 'Nutridash',
+            dateStart: 'November 2023',
+            dateEnd: 'March 2024',
+            image1: './port_content/nutridash/nutri1.jpg',
+            image2: './port_content/nutridash/nutri2.jpg',
+            tech: ['PHP', 'Tailwind CSS', 'Object Oriented Programming', 'Calorie Tracker']
+        },
+        {
             title: 'Echonox',
             dateStart: 'April 2024',
             dateEnd: 'May 2024',
@@ -25,14 +41,6 @@ const Portfolio = () => {
             image1: './port_content/embark/embark1.png',
             image2: './port_content/embark/embark2.png',
             tech: ['Vanilla HTML & CSS', 'Photography', 'Business Portfolio', 'Cameras']
-        },
-        {
-            title: 'Hardware Sugar',
-            dateStart: 'September 2023',
-            dateEnd: 'October 2023',
-            image1: './port_content/hardware_sugar/HWS1.png',
-            image2: './port_content/hardware_sugar/HWS2.png',
-            tech: ['Wordpress', 'Figma Design', 'PC Store', 'Business Website']
         },
         {
             title: 'Revizio (Mockup)',
@@ -51,6 +59,14 @@ const Portfolio = () => {
             tech: ['Mobile App', 'Android Native', 'Flashcards App', 'React Native']
         },
         {
+            title: 'G-Tara Na',
+            dateStart: 'September 2024',
+            dateEnd: 'January 2025',
+            image1: './port_content/g_tara/GT1.png',
+            image2: './port_content/g_tara/GT2.png',
+            tech: ['React Native', 'FIGMA Design', 'Tailwind', 'Guitar Learning App']
+        },
+        {
             title: 'ATV (Mockup)',
             dateStart: 'November 2024',
             dateEnd: 'January 2025',
@@ -60,7 +76,7 @@ const Portfolio = () => {
         },
         {
             title: 'ATV (NEXT)',
-            dateStart: 'November 2024',
+            dateStart: 'January 2025',
             dateEnd: 'June 2025',
             image1: './port_content/atv_next/atv1.png',
             image2: './port_content/atv_next/atv2.png',
@@ -81,22 +97,6 @@ const Portfolio = () => {
             image1: './port_content/smartTank/smart1.png',
             image2: './port_content/smartTank/smart2.png',
             tech: ['Community Based', 'PHP & JavaScript', 'MySQL', 'Tailwind CSS']
-        },
-        {
-            title: 'G-Tara Na',
-            dateStart: 'September 2024',
-            dateEnd: 'January 2025',
-            image1: './port_content/g_tara/GT1.png',
-            image2: './port_content/g_tara/GT2.png',
-            tech: ['React Native', 'FIGMA Design', 'Tailwind', 'Guitar Learning App']
-        },
-        {
-            title: 'Nutridash',
-            dateStart: 'November 2023',
-            dateEnd: 'March 2024',
-            image1: './port_content/nutridash/nutri1.jpg',
-            image2: './port_content/nutridash/nutri2.jpg',
-            tech: ['PHP', 'Tailwind CSS', 'Object Oriented Programming', 'Calorie Tracker']
         },
     ]
 
