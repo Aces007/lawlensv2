@@ -17,8 +17,25 @@ const Contact = () => {
                 </div>
             </div>
 
-            <div className="rightContact_cont">
+            <div className="rightContact_cont flex flex-col items-center justify-around gap-8 bg-text_content2 p-6 rounded-md">
+                <div className="flex flex-col items-center justify-between gap-4">
+                    <h1 className="font-nunito font-bold uppercase text-labelContact text-background">Email</h1>
+                    <img src="./svgs/Email.svg" alt="EMAIL" className="contactSvgs"/>
+                    <p className="text-center font-montserrat font-semibold text-background">acelawrence007@gmail.com</p>
+                </div>
 
+                <div className="flex flex-col items-center justify-between gap-4">
+                    <h1 className="font-nunito font-bold uppercase text-labelContact text-background">Call</h1>
+                    <img src="./svgs/Phone.svg" alt="PHONE" className="contactSvgs"/>
+                    <p className="text-center font-montserrat font-semibold text-background">Call me at +63-956-967-5640
+                        I’m available by 8:00AM PHT</p>
+                </div>
+
+                <div className="flex flex-col items-center justify-between gap-4">
+                    <h1 className="font-nunito font-bold uppercase text-labelContact text-background">Find Out More</h1>
+                    <img src="./svgs/Linkedin2.svg" alt="LINKEDIN" className="contactSvgs"/>
+                    <p className="text-center font-montserrat font-semibold text-background">Reach out on LinkedIn</p>
+                </div>
             </div>
         </div>
     )
