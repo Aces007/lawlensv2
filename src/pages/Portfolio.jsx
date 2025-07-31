@@ -128,7 +128,14 @@ const Portfolio = () => {
                             <p className="font-nunito font-regular text-note uppercase text-text_content2">{project.dateEnd}</p>
                         </div>
 
-                        <div className="flex flex-row items-center justify-around gap-4">
+                        <h1 className="portMobile_h1 font-nunito font-bold text-subheadingPortMob uppercase text-text_content2 md:hidden">{project.title}</h1>
+
+                        <div className="flex flex-row items-center justify-between">
+                            <img src={project.image1} alt={`${project.title} 1`} className="port_previews"/>
+                            <img src={project.image2} alt={`${project.title} 2`} className="port_previews"/>
+                        </div>
+                        
+                        <div className="flex flex-row items-center justify-around gap-12">
                             {/* ---- Date Header Android ---- */}
                             <div className="projects_dateDrop md:hidden">
                                 <button onClick={() => toggleDates(idx)} className="showDatesBtn">
@@ -143,15 +150,13 @@ const Portfolio = () => {
                                 )}
                             </div>
 
-                            <h1 className="font-nunito font-bold text-subheadingPortMob uppercase text-text_content2 md:hidden">{project.title}</h1>
-
                             {/* ---- Tech Dropdown Android ---- */}
-                            <div className="md:hidden">
+                            <div className="tech_drop md:hidden">
                                 <button onClick={() => toggleTech(idx)} className="showTechBtn">
                                     {showTech[idx] ? "Hide Tech Stack" : "Show Tech Stach"}
                                 </button>
                                 {showTech[idx] && (
-                                    <div className="flex flex-wrap justify-center gap-4">
+                                    <div className="flex flex-wrap flex-col items-center justify-center gap-4">
                                         {project.tech.map((tech, i) => (
                                             <span key={i} className="font-montserrat font-semibold text-text_content2 text-xs bg-gray-100 rounded px-2 py-1">
                                                 {tech}
@@ -160,12 +165,6 @@ const Portfolio = () => {
                                     </div>
                                 )}
                             </div>
-                        </div>
-
-
-                        <div className="flex flex-row items-center justify-between">
-                            <img src={project.image1} alt={`${project.title} 1`} className="port_previews"/>
-                            <img src={project.image2} alt={`${project.title} 2`} className="port_previews"/>
                         </div>
 
 
