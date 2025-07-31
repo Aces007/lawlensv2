@@ -34,6 +34,8 @@
             --ff-size-heading-mob: 60px;
             --ff-size-heading-mob-about: 30px;
             --ff-size-heading-mob-port: 30px;
+            --ff-size-heading-mob-contact: 40px;
+            --ff-size-heading-mob-contact2: 15px;
 
         /* ===============
             SubHeading Styles
@@ -42,6 +44,7 @@
             --ff-size-subheading: 25px;
             --ff-size-subheading-tab: 20px;
             --ff-size-subheading-mob: 20px;
+            --ff-size-subheading-mob_contact: 30px;
 
 
         /* ===============
@@ -51,6 +54,8 @@
             --ff-weight-bodyii: 400;
             --ff-size-body: 10px;
             --ff-size-body-mob: 22px;
+            --ff-size-body-mob-contact: 18px;
+            --ff-size-body-mob-contact2: 12px;
 
         /* ===============
             Buttons Styles
@@ -146,6 +151,12 @@
 
 /*#region Contact */
 .contactSvgs {
+    width: 50px;
+    height: 50px;
+    color: var(--textII-col-org);
+}
+
+.contactSvgs_right {
     width: 50px;
     height: 50px;
     color: var(--textII-col-org);
@@ -338,6 +349,10 @@
             font-size: var(--ff-size-heading-mob-port);
         }
 
+        .portMobile_h1 {
+            text-align: center;
+        }
+
         .projects_dateDrop {
             display: flex;
             flex-direction: column;
@@ -355,14 +370,21 @@
             border-radius: 5px;
         }
         
-        .showTechBtn {
-            font-family: var(--font-montserrat);
-            font-weight: 600;
-            font-size: var(--ff-size-buttonsMob);
-            color: var(--primary-col-dark);
-            background-color: var(--buttons-col-org);
-            padding: 4px;
-            border-radius: 5px;
+        .tech_drop {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+
+            .showTechBtn {
+                font-family: var(--font-montserrat);
+                font-weight: 600;
+                font-size: var(--ff-size-buttonsMob);
+                color: var(--primary-col-dark);
+                background-color: var(--buttons-col-org);
+                padding: 4px;
+                border-radius: 5px;
+            }
         }
 
         .port_previews {
@@ -370,6 +392,68 @@
             height: 100px;
         }
         /*#endregion Portfolio */
+
+        /*#region Contact */
+        .contact_cont {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 150px;
+        }
+
+        .leftContact_cont {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100vw;            
+
+            .contact_h1 {
+                font-size: var(--ff-size-heading-mob-contact);
+            }
+
+            .contact_h2 {
+                font-size: var(--ff-size-subheading-mob);
+            }
+        }
+
+        .contact_body {
+            font-size: var(--ff-size-body-mob-contact);
+        }
+
+        .contact_svgs {
+            position: fixed;
+            top: 850px;
+        }
+
+        .contactSvgs {
+            width: 30px;
+            height: 30px;
+            color: var(--textII-col-org);
+        }
+
+        .rightContact_cont {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            margin-bottom: 50px;
+
+            .rightContact_h1 {
+                font-size: var(--ff-size-heading-mob-contact2);
+            }
+
+            .contactSvgs_right {
+                width: 30px;
+                height: 30px;
+                color: var(--textII-col-org);
+            }
+
+            .rightContact_body {
+                font-size: var(--ff-size-body-mob-contact2);
+            }
+        }
+        /*#endregion Contact */
     }
 
     @media (max-width: 1280px) {
