@@ -45,6 +45,7 @@ module.exports = {
         subheadingPort: "40px",
         subheadingContact: "40px",
         subheadingPortMob: "20px",
+        labelContact: "20px",
         portBtnAbout: "40px",
         bodyContact: "25px",
         body: "10px",
