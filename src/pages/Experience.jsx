@@ -51,14 +51,35 @@ const Experience = () => {
     const next = () => setActiveIdx((i) => (i + 1) % yearGroups.length);
 
     return (
-        <div className="exp_cont">
+        <div className="exp_cont flex flex-row justify-between items-center mt-48 mb-20 mx-28 gap-8">
             <div className="sticky_tagline">
                 <h2>Charting Career Milestones</h2>
             </div>
 
             <div className="carousel_btns">
-                
+                <button onClick={prev} aria-label="Previous Year" className="carouselBtn">
+                    <img src="./svgs/Left.svg" alt="Left" className="carouselSVG"/>
+                </button>
+                <section className="year_section">
+                    <div className="year_inner" ref={yearRef} style={yearStyle}>
+                        <span className="year_label">{year}</span>
+                    </div>
+                </section>
+                <button onClick={prev} aria-label="Previous Year" className="carouselBtn">
+                    <img src="./svgs/Right.svg" alt="Right" className="carouselSVG"/>
+                </button>
             </div>
+
+            <section className={`exp_cards ${cardsVisible ? "visible" : ""}`}>
+                {experiences.map((exp, i) => {
+                    <div key={i} className="exp_content">
+                        <div className="cards_overLay"/>
+                        <div className="title_wrapper">
+                            <h3>{exp.title}</h3>
+                        </div>
+                    </div>
+                })}
+            </section>
         </div>
     )
 }
