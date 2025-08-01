@@ -52,6 +52,7 @@ module.exports = {
         buttons: "20px",
         note: "15px",
         yearLabel: "320px",
+        expContent: "50px",
       },
       fontWeight: {
         heading: "800",
