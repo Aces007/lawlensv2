@@ -1,19 +1,22 @@
+// Experience.jsx
 import React, { useEffect, useRef, useState } from "react";
+// If your build system requires importing images instead of referencing public/ paths:
+// import ArchiTechVault from "./exp_content/ATV.png";
 
 const Experience = () => {
   const experiencesByYear = [
     {
       year: 2025,
       experiences: [
-        { title: "Published ArchiTech Vault", image: "./exp_content/ATV.png" },
-        { title: "Published ArchiTech Vault", image: "./exp_content/ATV.png" },
+        { title: "Published ArchiTech Vault", image: "/exp_content/ATV.png" },
+        { title: "Published ArchiTech Vault", image: "/exp_content/ATV.png" },
+        { title: "Published ArchiTech Vault", image: "/exp_content/ATV.png" },
+        { title: "Published ArchiTech Vault", image: "/exp_content/ATV.png" },
       ],
     },
     {
       year: 2024,
-      experiences: [
-        { title: "Built Something Else", image: null },
-      ],
+      experiences: [{ title: "Built Something Else", image: null }],
     },
   ];
 
@@ -41,15 +44,15 @@ const Experience = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, [activeIdx]);
 
-  // Reveal cards when year scrolls past
+  // Reveal cards when year is visible
   useEffect(() => {
     if (!yearRef.current) return;
     setCardsVisible(false);
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setCardsVisible(entry.boundingClientRect.bottom < 0);
+        setCardsVisible(entry.isIntersecting);
       },
-      { threshold: 0 }
+      { threshold: 0.1 }
     );
     observer.observe(yearRef.current);
     return () => observer.disconnect();
@@ -91,11 +94,14 @@ const Experience = () => {
             style={{
               backgroundImage: exp.image ? `url(${exp.image})` : "none",
               transitionDelay: cardsVisible ? `${i * 70}ms` : "0ms",
+              backgroundColor: exp.image ? undefined : "#3f4a6b",
             }}
           >
             <div className="cards_overLay" />
             <div className="title_wrapper">
-              <h3>{exp.title}</h3>
+              <h3 className="font-montserrat font-bold text-expContent text-text_content2">
+                {exp.title}
+              </h3>
             </div>
           </div>
         ))}
