@@ -1,7 +1,4 @@
-// Experience.jsx
 import React, { useEffect, useRef, useState } from "react";
-// If your build system requires importing images instead of referencing public/ paths:
-// import ArchiTechVault from "./exp_content/ATV.png";
 
 const Experience = () => {
   const experiencesByYear = [
@@ -21,13 +18,12 @@ const Experience = () => {
   ];
 
   const [activeIdx, setActiveIdx] = useState(0);
-  const [cardsVisible, setCardsVisible] = useState(false);
   const yearRef = useRef(null);
   const [yearStyle, setYearStyle] = useState({ transform: "translateY(0px) scale(1)" });
 
   const { year, experiences } = experiencesByYear[activeIdx];
 
-  // Parallax year
+  // Parallax year only
   useEffect(() => {
     const update = () => {
       if (!yearRef.current) return;
@@ -44,26 +40,12 @@ const Experience = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, [activeIdx]);
 
-  // Reveal cards when year is visible
-  useEffect(() => {
-    if (!yearRef.current) return;
-    setCardsVisible(false);
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setCardsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(yearRef.current);
-    return () => observer.disconnect();
-  }, [activeIdx]);
-
   const prev = () =>
     setActiveIdx((i) => (i - 1 + experiencesByYear.length) % experiencesByYear.length);
   const next = () => setActiveIdx((i) => (i + 1) % experiencesByYear.length);
 
   return (
-    <div className="exp_cont flex flex-col justify-between items-center mt-48 mb-20 mx-28 gap-8">
+    <div className="exp_cont flex flex-col justify-between items-center mt-48 mx-28 gap-8">
       <div className="sticky_tagline">
         <h2 className="exp_heading text-headingAbout font-montserrat font-heading uppercase text-text_content2">
           Charting Career Milestones
@@ -86,14 +68,14 @@ const Experience = () => {
         </button>
       </div>
 
-      <section className={`exp_cards ${cardsVisible ? "visible" : ""}`}>
+      <section className="exp_cards visible">
         {experiences.map((exp, i) => (
           <div
             key={i}
-            className="exp_content"
+            className="exp_content flex flex-col items-center justify-center"
             style={{
               backgroundImage: exp.image ? `url(${exp.image})` : "none",
-              transitionDelay: cardsVisible ? `${i * 70}ms` : "0ms",
+              transitionDelay: `${i * 70}ms`,
               backgroundColor: exp.image ? undefined : "#3f4a6b",
             }}
           >
