@@ -5,7 +5,6 @@ const About = () => {
     const previewImages = [
         "./Previews.png",
         "./PreviewsII.png",
-        "./PreviewsIII.png",
     ]
 
     const [currentIndex, setCurrentIndex] = useState(0);
