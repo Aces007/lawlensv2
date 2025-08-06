@@ -23,7 +23,6 @@ const NavigationHeader = () => {
     document.body.style.overflow = burgerMenuOpen ? 'hidden' : 'auto';
   }, [burgerMenuOpen])
 
-  
 
   return (
     <header>
@@ -32,15 +31,15 @@ const NavigationHeader = () => {
         <div className="flex flex-row items-center justify-around w-screen mx-20 gap-20">
           
           <div className="flex flex-row justify-between items-center gap-40">
-            <Link to="/about" className="font-nunito font-bold uppercase text-primary text-buttons focus:text-highlight">About</Link>
-            <Link to="/experience" className="font-nunito font-bold uppercase text-primary text-buttons focus:text-highlight">Experience</Link>
+            <Link to="/about" className={`font-nunito font-bold uppercase text-primary text-buttons focus:text-highlight`}>About</Link>
+            <Link to="/experience" className={`font-nunito font-bold uppercase text-primary text-buttons focus:text-highlight`}>Experience</Link>
           </div>
 
           <Link to="/"><img src={logo} alt="logo" className="logo_head" /></Link>
           
           <div className="flex flex-row justify-between items-center gap-40">
-            <Link to="/portfolio" className="font-nunito font-bold uppercase text-primary text-buttons focus:text-highlight">Portfolio</Link>
-            <Link to="/contact" className="font-nunito font-bold uppercase text-primary text-buttons focus:text-highlight">Contact</Link>
+            <Link to="/portfolio" className={`font-nunito font-bold uppercase text-primary text-buttons focus:text-highlight`}>Portfolio</Link>
+            <Link to="/contact" className={`font-nunito font-bold uppercase text-primary text-buttons focus:text-highlight`}>Contact</Link>
           </div>
         </div>
       </div>
