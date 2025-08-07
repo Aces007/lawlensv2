@@ -52,26 +52,47 @@ const Experience = () => {
     },
   ];
 
-  const [activeIdx, setActiveIdx] = useState(0);
-  const yearRef = useRef(null);
   const [yearStyle, setYearStyle] = useState({ transform: "translateY(0px) scale(1)" });
-
+  const [cardsStyle, setCardsStyle] = useState({ transform: "translateY(0px)" });
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [scrollOffset, setScrollOffset] = useState(0);
+  const yearRef = useRef(null);
+  const expCardsRef = useRef(null);
   const { year, experiences } = experiencesByYear[activeIdx];
+
+
+  
+  useEffect(() => {
+    const updateCards = () => {
+      if (!expCardsRef.current) return;
+      const rect = expCardsRef.current.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const offset = Math.min(Math.max(-rect.top, 0), vh);
+      const translateY = offset * 0.1;
+      setCardsStyle({ transform: `translateY(${translateY}px)` })
+      setScrollOffset(offset);
+    };
+
+    const onScroll = () => requestAnimationFrame(updateCards);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    updateCards();
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   // Parallax year only
   useEffect(() => {
-    const update = () => {
+    const updateYears = () => {
       if (!yearRef.current) return;
       const rect = yearRef.current.getBoundingClientRect();
       const vh = window.innerHeight;
       const offset = Math.min(Math.max(-rect.top, 0), vh);
-      const translateY = offset * 0.3;
+      const translateY = offset * 0.5;
       const scale = 1 - Math.min(offset / (vh * 3), 0.1);
       setYearStyle({ transform: `translateY(${translateY}px) scale(${scale})` });
     };
-    const onScroll = () => requestAnimationFrame(update);
+    const onScroll = () => requestAnimationFrame(updateYears);
     window.addEventListener("scroll", onScroll, { passive: true });
-    update();
+    updateYears();
     return () => window.removeEventListener("scroll", onScroll);
   }, [activeIdx]);
 
@@ -103,23 +124,31 @@ const Experience = () => {
         </button>
       </div>
 
-      <section className="exp_cards visible">
-        {experiences.map((exp, i) => (
-          <div
-            key={i}
-            className="exp_content flex flex-col items-center justify-center"
-            style={{
-              transitionDelay: `${i * 70}ms`,
-            }}
-          >
-            <div className="cards_overLay" />
-            <div className="title_wrapper">
-              <h3 className="font-montserrat font-black tracking-wider text-expContent text-text_content2 text-white">
-                {exp.title}
-              </h3>
+      <section className="exp_cards visible" ref={expCardsRef} style={cardsStyle}>
+        {experiences.map((exp, i) => {
+          const scale = 1 - Math.min(scrollOffset / (window.innerHeight * 3), 0.1);
+          const textStyle = {
+            transform: `scale(${scale})`, 
+            transitionDelay: 'transform 0.2 ease-in',
+          };
+          return (
+            <div
+              key={i}
+              className="exp_content flex flex-col items-center justify-center"
+            >
+              <div className="cards_overLay" />
+              <div className="title_wrapper" 
+              style={{
+                transitionDelay: `${i * 70}ms`
+              }} 
+                >
+                <h3 className="font-montserrat font-black tracking-wider text-expContent text-text_content2 text-white" style={textStyle}>
+                  {exp.title}
+                </h3>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </section>
     </div>
   );
