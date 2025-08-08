@@ -9,11 +9,12 @@ const Contact = () => {
 
                 <p className="contact_body font-nunito font-medium text-bodyContact text-text_content2 w-3/4">The best part about my field is the brainstorming of ideas that has the potential to revolutionize our world as we know it. It would be my pleasure knowing that you can be a part of that experience.</p>
 
-                <div className="contact_svgs flex flex-row gap-20">
+                <div className="contact_svgs flex flex-row gap-12">
                     <a href="https://github.com/Aces007" target="_blank"><img src="./svgs/Github.svg" alt="Github" className="contactSvgs" /></a>
                     <a href="https://www.linkedin.com/in/ace-clavano/" target="_blank"><img src="./svgs/Linkedin.svg" alt="LinkedIn" className="contactSvgs" /></a>
                     <a href="https://www.youtube.com/channel/UCUksgf1rdABvqJMCI_1xc3A" target="_blank"><img src="./svgs/YT.svg" alt="YT" className="contactSvgs" /></a>
                     <a href="https://www.instagram.com/lawlensphotography/" target="_blank"><img src="./svgs/IG.svg" alt="IG" className="contactSvgs" /></a>
+                    <a href="https://www.datacamp.com/portfolio/acelawrence007" target="_blank"><img src="./svgs/datacamp.svg" alt="Datacamp" className="contactSvgs" /></a>
                 </div>
             </div>
 
