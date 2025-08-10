@@ -122,7 +122,7 @@ const Portfolio = () => {
                     <div key={idx} className="projects_content flex flex-col justify-around gap-8">
 
                         {/* ---- Title | Date Header ---- */}
-                        <div className="flex flex-row items-center justify-around gap-80 sm:hidden md:flex flex-row items-center justify-around gap-80">
+                        <div className="flex flex-row items-center justify-around gap-80 a3s:hidden md:flex flex-row items-center justify-around gap-80 a3s:hidden">
                             <p className="font-nunito font-regular text-note uppercase text-text_content2">{project.dateStart}</p>
                             <h1 className="font-nunito font-bold text-subheadingPort uppercase text-text_content2">{project.title}</h1>
                             <p className="font-nunito font-regular text-note uppercase text-text_content2">{project.dateEnd}</p>
@@ -142,11 +142,11 @@ const Portfolio = () => {
                                     {showDates[idx] ? "Hide Dates" : "Show Dates"}
                                 </button>
                                 {showDates[idx] && (
-                                    <div className="flex flex-row gap-4 font-nunito text-sm text-text_content2">
-                                        <p>{project.dateStart}</p>
-                                        <p>→</p>
-                                        <p>{project.dateEnd}</p>
+                                    <div className="flex flex-col items-center gap-4 font-nunito text-sm text-text_content2 mt-4">
+                                        <p><span className="font-extrabold">Start:</span> {project.dateStart}</p>
+                                        <p><span className="font-extrabold">End:</span> {project.dateEnd}</p>
                                     </div>
+                                    
                                 )}
                             </div>
 
@@ -168,7 +168,7 @@ const Portfolio = () => {
                         </div>
 
 
-                        <div className="flex items-center justify-center gap-60 sm:hidden md:flex items-center justify-center gap-60">
+                        <div className="flex items-center justify-center gap-60 a3s:hidden md:flex items-center justify-center gap-60 a3s:hidden">
                             {project.tech.map((tech, i) => (
                                 <span key={i} className="font-montserrat font-semibold text-text_content2">{tech}</span>
                             ))}

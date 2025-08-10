@@ -6,6 +6,7 @@ module.exports = {
   ],
   theme: {
     screens: {
+      a3s: {min:"360px"},
       sm: "412px",    // small phones
       md: "768px",    // tablets
       lg: "1024px",   // laptops
@@ -40,6 +41,7 @@ module.exports = {
         headingAbout: "50px",
         headingPort: "50px",
         headingContact: "50px",
+        headingExpMobile: "30px",
         subheadingHero: "40px",
         subheadingAbout: "25px",
         subheadingPort: "40px",
@@ -52,7 +54,9 @@ module.exports = {
         buttons: "20px",
         note: "15px",
         yearLabel: "320px",
+        yearLabelMobile: "100px",
         expContent: "50px",
+        expTitleMob: "25px",
       },
       fontWeight: {
         heading: "800",
