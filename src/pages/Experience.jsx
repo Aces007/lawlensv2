@@ -102,7 +102,7 @@ const Experience = () => {
 
   return (
     <div className="exp_cont flex flex-col justify-between items-center mt-48 mx-28 gap-8">
-      <h2 className="port_header font-montserrat font-extrabold text-headingPort uppercase text-text_content2">
+      <h2 className="port_header font-montserrat font-extrabold text-headingPort uppercase text-text_content2 a3s:w-screen text-center text-headingExpMobile">
         Charting Career Milestones
       </h2>
 
@@ -111,9 +111,9 @@ const Experience = () => {
           <img src="./svgs/Left.svg" alt="Left" className="carouselSVG" />
         </button>
 
-        <section className="year_section">
+        <section className="year_section a3s:px-8">
           <div className="year_inner" ref={yearRef} style={yearStyle}>
-            <span className="year_label font-montserrat font-bold text-yearLabel text-text_content2">
+            <span className="year_label font-montserrat font-bold text-yearLabel text-text_content2 a3s: text-yearLabelMobile">
               {year}
             </span>
           </div>
@@ -142,7 +142,7 @@ const Experience = () => {
                 transitionDelay: `${i * 70}ms`
               }} 
                 >
-                <h3 className="font-montserrat font-black tracking-wider text-expContent text-text_content2 text-white" style={textStyle}>
+                <h3 className="font-montserrat font-black tracking-wider text-expContent text-text_content2 text-white a3s:text-expTitleMob" style={textStyle}>
                   {exp.title}
                 </h3>
               </div>
