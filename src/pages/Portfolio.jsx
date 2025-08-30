@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const Portfolio = () => {
     const projects = [
@@ -111,10 +112,23 @@ const Portfolio = () => {
         setShowTech((prev) => ({...prev, [index]: !prev[index]}));
     };    
     
+    const pageVariants = {
+        initial: { opacity: 0, y: 20 },
+        animate: { opacity: 1, y: 0},
+        exit: { opacity: 0, y: -20 },
+    };
+    
 
 
     return (
-        <div className="flex flex-col items-center justify-center mt-36 mb-20 gap-8">
+        <motion.div 
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="flex flex-col items-center justify-center mt-36 mb-20 gap-8"
+        >
             <h1 className="port_header font-montserrat font-extrabold text-headingPort uppercase text-text_content2">Work That Works</h1>
 
             <div className="projects_cont flex flex-col items-center justify-center gap-20">
@@ -176,7 +190,7 @@ const Portfolio = () => {
                     </div>
                     ))}
             </div>            
-        </div>
+        </motion.div>
     )
 }
 

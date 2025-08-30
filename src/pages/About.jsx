@@ -1,11 +1,18 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const About = () => {
     const previewImages = [
         "./Previews.png",
         "./PreviewsII.png",
     ]
+
+    const pageVariants = {
+        initial: { opacity: 0, y: 20 },
+        animate: { opacity: 1, y: 0},
+        exit: { opacity: 0, y: -20 },
+    };
 
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -18,7 +25,14 @@ const About = () => {
     }, []);
 
     return (
-        <div className="about_cont flex flex-row items-center justify-around my-40 py-10 px-20">
+        <motion.div 
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="about_cont flex flex-row items-center justify-around my-40 py-10 px-20"
+        >
             <div className="about_content flex flex-col items-start justify-between gap-10 w-2/4">
                 <h1 className="about_heading text-headingAbout font-montserrat font-heading uppercase text-text_content2">Challenging Plateaus</h1>
 
@@ -37,7 +51,7 @@ const About = () => {
                 <Link to="/portfolio"><img src="./right_arrow.svg" className="font-body" /></Link>
             </div>
 
-        </div>
+        </motion.div>
     )
 }
 

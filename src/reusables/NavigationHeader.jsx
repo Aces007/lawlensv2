@@ -2,11 +2,20 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "/lawlens_logo.png";
 import { useState, useEffect } from "react";
 import MobileHeader from "./MobileHeader";
+import { motion } from "framer-motion";
+
 
 const NavigationHeader = () => {
   const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
   const [animateClose, setAnimateClose] = useState(false);
   const location = useLocation();
+
+  const pageVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0},
+    exit: { opacity: 0, y: -20 },
+  };
+
 
   const getLinkClasses = (path) => {
     const activeClasses = "text-highlight font-nunito font-bold uppercase text-buttons"
@@ -36,7 +45,14 @@ const NavigationHeader = () => {
   return (
     <header>
       {/* Desktop & Tablet Header */}
-      <div className="hidden md:flex fixed flex-row items-center justify-around top-0 left-0 w-full z-50 py-8">
+      <motion.div 
+        variants={pageVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        className="hidden md:flex fixed flex-row items-center justify-around top-0 left-0 w-full z-50 py-8"
+      >
         <div className="flex flex-row items-center justify-around w-screen mx-20 gap-20">
           
           <div className="flex flex-row justify-between items-center gap-40">
@@ -51,7 +67,7 @@ const NavigationHeader = () => {
             <Link to="/contact" className={getLinkClasses("/contact")}>Contact</Link>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Mobile Header */}
       <div className="mobile_head md:hidden">

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 const Experience = () => {
   const experiencesByYear = [
@@ -52,6 +53,13 @@ const Experience = () => {
     },
   ];
 
+  const pageVariants = {
+      initial: { opacity: 0, y: 20 },
+      animate: { opacity: 1, y: 0},
+      exit: { opacity: 0, y: -20 },
+  };
+
+
   const [yearStyle, setYearStyle] = useState({ transform: "translateY(0px) scale(1)" });
   const [cardsStyle, setCardsStyle] = useState({ transform: "translateY(0px)" });
   const [activeIdx, setActiveIdx] = useState(0);
@@ -101,7 +109,14 @@ const Experience = () => {
   const next = () => setActiveIdx((i) => (i + 1) % experiencesByYear.length);
 
   return (
-    <div className="exp_cont flex flex-col justify-between items-center mt-48 mx-28 gap-8">
+    <motion.div 
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      transition={{ duration: 0.6, ease: "easeInOut" }}
+      className="exp_cont flex flex-col justify-between items-center mt-48 mx-28 gap-8"
+    >
       <h2 className="port_header font-montserrat font-extrabold text-headingPort uppercase text-text_content2 a3s:w-screen text-center text-headingExpMobile">
         Charting Career Milestones
       </h2>
@@ -150,7 +165,7 @@ const Experience = () => {
           );
         })}
       </section>
-    </div>
+    </motion.div>
   );
 };
 
