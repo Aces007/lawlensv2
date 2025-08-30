@@ -1,104 +1,114 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const Portfolio = () => {
     const projects = [
-        {
-            title: 'Ace Software',
-            dateStart: 'April 2023',
-            dateEnd: 'September 2023',
-            image1: './port_content/acesoftware/acesoft1.png',
-            image2: './port_content/acesoftware/acesoft2.png',
-            tech: ['WordPress', 'Vanilla HTML & CSS', 'UI/UX Design', 'Personal Website']
-        },
-        {
-            title: 'Hardware Sugar',
-            dateStart: 'September 2023',
-            dateEnd: 'October 2023',
-            image1: './port_content/hardware_sugar/HWS1.png',
-            image2: './port_content/hardware_sugar/HWS2.png',
-            tech: ['Wordpress', 'Figma Design', 'PC Store', 'Business Website']
-        },
-        {
-            title: 'Nutridash',
-            dateStart: 'November 2023',
-            dateEnd: 'March 2024',
-            image1: './port_content/nutridash/nutri1.jpg',
-            image2: './port_content/nutridash/nutri2.jpg',
-            tech: ['PHP', 'Tailwind CSS', 'Object Oriented Programming', 'Calorie Tracker']
-        },
-        {
-            title: 'Echonox',
-            dateStart: 'April 2024',
-            dateEnd: 'May 2024',
-            image1: './port_content/echonox/echo1.png',
-            image2: './port_content/echonox/echo2.png',
-            tech: ['Vanilla HTML & CSS', 'Business Website', 'Portfolio', 'Web Design']
-        },
-        {
-            title: 'Embark',
-            dateStart: 'April 2024',
-            dateEnd: 'May 2024',
-            image1: './port_content/embark/embark1.png',
-            image2: './port_content/embark/embark2.png',
-            tech: ['Vanilla HTML & CSS', 'Photography', 'Business Portfolio', 'Cameras']
-        },
-        {
-            title: 'Revizio (Mockup)',
-            dateStart: 'August 2024',
-            dateEnd: 'September 2024',
-            image1: './port_content/revizio/Rev1.png',
-            image2: './port_content/revizio/Rev2.png',
-            tech: ['Mockup Design', 'FIGMA Design', 'Flashcards App', 'React Native']
-        },
-        {
-            title: 'Revizio (Native)',
-            dateStart: 'August 2024',
-            dateEnd: 'September 2024',
-            image1: './port_content/revizio_native/Revo1.png',
-            image2: './port_content/revizio_native/Revo2.png',
-            tech: ['Mobile App', 'Android Native', 'Flashcards App', 'React Native']
-        },
-        {
-            title: 'G-Tara Na',
-            dateStart: 'September 2024',
-            dateEnd: 'January 2025',
-            image1: './port_content/g_tara/GT1.png',
-            image2: './port_content/g_tara/GT2.png',
-            tech: ['React Native', 'FIGMA Design', 'Tailwind', 'Guitar Learning App']
-        },
-        {
-            title: 'ATV (Mockup)',
-            dateStart: 'November 2024',
-            dateEnd: 'January 2025',
-            image1: './port_content/atv/ATV1.png',
-            image2: './port_content/atv/ATV2.png',
-            tech: ['NEXT JS', 'FIGMA Design', 'Thesis Database', 'Open University']
-        },
-        {
-            title: 'ATV (NEXT)',
-            dateStart: 'January 2025',
-            dateEnd: 'June 2025',
-            image1: './port_content/atv_next/atv1.png',
-            image2: './port_content/atv_next/atv2.png',
-            tech: ['NEXT JS', 'Tailwind CSS', 'Thesis Database', 'Open University']
-        },
-        {
-            title: 'Transient Book App',
-            dateStart: 'May 2025',
-            dateEnd: 'June 2025',
-            image1: './port_content/transient/TR1.png',
-            image2: './port_content/transient/TR2.png',
-            tech: ['FIGMA Design', 'React Native', 'Book App', 'Light & Dark']
-        },
-        {
-            title: 'Smart Water Tank',
-            dateStart: 'June 2025',
-            dateEnd: 'June 2025',
-            image1: './port_content/smartTank/smart1.png',
-            image2: './port_content/smartTank/smart2.png',
-            tech: ['Community Based', 'PHP & JavaScript', 'MySQL', 'Tailwind CSS']
-        },
-    ]
+    {
+        title: 'Ephemeral (Mockup)',
+        dateStart: 'July 2025',
+        dateEnd: 'August 2025',
+        image1: './port_content/ephemeral/Ephe1.png',
+        image2: './port_content/ephemeral/Ephe2.png',
+        tech: ['Figma Design', 'In Development', 'Typescript', 'React Native']
+    },
+    {
+        title: 'Smart Water Tank',
+        dateStart: 'June 2025',
+        dateEnd: 'June 2025',
+        image1: './port_content/smartTank/smart1.png',
+        image2: './port_content/smartTank/smart2.png',
+        tech: ['Community Based', 'PHP & JavaScript', 'MySQL', 'Tailwind CSS']
+    },
+    {
+        title: 'Transient Book App',
+        dateStart: 'May 2025',
+        dateEnd: 'June 2025',
+        image1: './port_content/transient/TR1.png',
+        image2: './port_content/transient/TR2.png',
+        tech: ['FIGMA Design', 'React Native', 'Book App', 'Light & Dark']
+    },
+    {
+        title: 'ATV (NEXT)',
+        dateStart: 'January 2025',
+        dateEnd: 'June 2025',
+        image1: './port_content/atv_next/atv1.png',
+        image2: './port_content/atv_next/atv2.png',
+        tech: ['NEXT JS', 'Tailwind CSS', 'Thesis Database', 'Open University']
+    },
+    {
+        title: 'ATV (Mockup)',
+        dateStart: 'November 2024',
+        dateEnd: 'January 2025',
+        image1: './port_content/atv/ATV1.png',
+        image2: './port_content/atv/ATV2.png',
+        tech: ['NEXT JS', 'FIGMA Design', 'Thesis Database', 'Open University']
+    },
+    {
+        title: 'G-Tara Na',
+        dateStart: 'September 2024',
+        dateEnd: 'January 2025',
+        image1: './port_content/g_tara/GT1.png',
+        image2: './port_content/g_tara/GT2.png',
+        tech: ['React Native', 'FIGMA Design', 'Tailwind', 'Guitar Learning App']
+    },
+    {
+        title: 'Revizio (Native)',
+        dateStart: 'August 2024',
+        dateEnd: 'September 2024',
+        image1: './port_content/revizio_native/Revo1.png',
+        image2: './port_content/revizio_native/Revo2.png',
+        tech: ['Mobile App', 'Android Native', 'Flashcards App', 'React Native']
+    },
+    {
+        title: 'Revizio (Mockup)',
+        dateStart: 'August 2024',
+        dateEnd: 'September 2024',
+        image1: './port_content/revizio/Rev1.png',
+        image2: './port_content/revizio/Rev2.png',
+        tech: ['Mockup Design', 'FIGMA Design', 'Flashcards App', 'React Native']
+    },
+    {
+        title: 'Embark',
+        dateStart: 'April 2024',
+        dateEnd: 'May 2024',
+        image1: './port_content/embark/embark1.png',
+        image2: './port_content/embark/embark2.png',
+        tech: ['Vanilla HTML & CSS', 'Photography', 'Business Portfolio', 'Cameras']
+    },
+    {
+        title: 'Echonox',
+        dateStart: 'April 2024',
+        dateEnd: 'May 2024',
+        image1: './port_content/echonox/echo1.png',
+        image2: './port_content/echonox/echo2.png',
+        tech: ['Vanilla HTML & CSS', 'Business Website', 'Portfolio', 'Web Design']
+    },
+    {
+        title: 'Nutridash',
+        dateStart: 'November 2023',
+        dateEnd: 'March 2024',
+        image1: './port_content/nutridash/nutri1.jpg',
+        image2: './port_content/nutridash/nutri2.jpg',
+        tech: ['PHP', 'Tailwind CSS', 'Object Oriented Programming', 'Calorie Tracker']
+    },
+    {
+        title: 'Hardware Sugar',
+        dateStart: 'September 2023',
+        dateEnd: 'October 2023',
+        image1: './port_content/hardware_sugar/HWS1.png',
+        image2: './port_content/hardware_sugar/HWS2.png',
+        tech: ['Wordpress', 'Figma Design', 'PC Store', 'Business Website']
+    },
+    {
+        title: 'Ace Software',
+        dateStart: 'April 2023',
+        dateEnd: 'September 2023',
+        image1: './port_content/acesoftware/acesoft1.png',
+        image2: './port_content/acesoftware/acesoft2.png',
+        tech: ['WordPress', 'Vanilla HTML & CSS', 'UI/UX Design', 'Personal Website']
+    },
+];
+
 
     const [showDates, setShowDates] = useState({});
     const [showTech, setShowTech] = useState({});
@@ -111,10 +121,23 @@ const Portfolio = () => {
         setShowTech((prev) => ({...prev, [index]: !prev[index]}));
     };    
     
+    const pageVariants = {
+        initial: { opacity: 0, y: 20 },
+        animate: { opacity: 1, y: 0},
+        exit: { opacity: 0, y: -20 },
+    };
+    
 
 
     return (
-        <div className="flex flex-col items-center justify-center mt-36 mb-20 gap-8">
+        <motion.div 
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="flex flex-col items-center justify-center mt-36 mb-20 gap-8"
+        >
             <h1 className="port_header font-montserrat font-extrabold text-headingPort uppercase text-text_content2">Work That Works</h1>
 
             <div className="projects_cont flex flex-col items-center justify-center gap-20">
@@ -176,7 +199,7 @@ const Portfolio = () => {
                     </div>
                     ))}
             </div>            
-        </div>
+        </motion.div>
     )
 }
 

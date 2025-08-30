@@ -1,6 +1,22 @@
+import { motion } from "framer-motion";
+
 const Contact = () => {
+    const pageVariants = {
+        initial: { opacity: 0, y: 20 },
+        animate: { opacity: 1, y: 0},
+        exit: { opacity: 0, y: -20 },
+    };
+
+
     return (
-        <div className="contact_cont flex flex-row justify-between items-center mt-48 mb-20 mx-28 gap-8">
+        <motion.div 
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="contact_cont flex flex-row justify-between items-center mt-48 mb-20 mx-28 gap-8"
+        >
             <div className="leftContact_cont flex flex-col justify-around gap-16">
                 <div className="contact_headers">
                     <h1 className="contact_h1 font-montserrat font-extrabold text-headingContact text-text_content2">NEED HELP?</h1>
@@ -38,7 +54,7 @@ const Contact = () => {
                     <p className="rightContact_body text-center font-montserrat font-semibold text-background">Reach out on LinkedIn</p>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
