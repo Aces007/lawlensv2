@@ -4,6 +4,22 @@ import { motion } from "framer-motion";
 const Portfolio = () => {
     const projects = [
     {
+        title: 'Ephemeral (Native)',
+        dateStart: 'August 2025',
+        dateEnd: 'Ongoing',
+        image1: './port_content/ephemeral-native/Ephe1.png',
+        image2: './port_content/ephemeral-native/Ephe2.png',
+        tech: ['In Development', 'Typescript', 'React Native', 'Supabase']
+    },
+    {
+        title: 'Metal Gear Seekers',
+        dateStart: 'August 2025',
+        dateEnd: 'Ongoing',
+        image1: './port_content/mgs/mgs1.png',
+        image2: './port_content/mgs/mgs2.png',
+        tech: ['E-Commerce', 'Computer Tech Store', 'Figma', 'Adobe Illustrator']
+    },
+    {
         title: 'Ephemeral (Mockup)',
         dateStart: 'July 2025',
         dateEnd: 'August 2025',
@@ -145,7 +161,7 @@ const Portfolio = () => {
                     <div key={idx} className="projects_content flex flex-col justify-around gap-8">
 
                         {/* ---- Title | Date Header ---- */}
-                        <div className="flex flex-row items-center justify-around gap-80 a3s:hidden md:flex flex-row items-center justify-around gap-80 a3s:hidden">
+                        <div className="flex flex-row items-center justify-around gap-72 a3s:hidden md:flex flex-row items-center justify-around gap-80 a3s:hidden">
                             <p className="font-nunito font-regular text-note uppercase text-text_content2">{project.dateStart}</p>
                             <h1 className="font-nunito font-bold text-subheadingPort uppercase text-text_content2">{project.title}</h1>
                             <p className="font-nunito font-regular text-note uppercase text-text_content2">{project.dateEnd}</p>

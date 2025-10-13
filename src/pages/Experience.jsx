@@ -6,6 +6,8 @@ const Experience = () => {
     {
       year: 2025,
       experiences: [
+        { title: "Designed Ephemeral and currently in development" },
+        { title: "Designing Metal Gear Seekers" },
         { title: "Designed ArchiTech Vault" },
         { title: "Developed ArchiTech Vault using NEXT.JS" },
         { title: "Finished G-Tara App for first defense" },
@@ -53,119 +55,79 @@ const Experience = () => {
     },
   ];
 
-  const pageVariants = {
-      initial: { opacity: 0, y: 20 },
-      animate: { opacity: 1, y: 0},
-      exit: { opacity: 0, y: -20 },
-  };
+  // const container = {
+  //   hidden: { opacity: 0},
+  //   show: { opacity: 1, transition: { staggerChildren: 0.2}}
+  // }
+  
+  // const item = {
+  //   hidden: { opacity: 0, y: 20 },
+  //   show: { opacity: 1, y: 0, transition: { duration: 0.4} },
+  // }
 
-
-  const [yearStyle, setYearStyle] = useState({ transform: "translateY(0px) scale(1)" });
-  const [cardsStyle, setCardsStyle] = useState({ transform: "translateY(0px)" });
+  
   const [activeIdx, setActiveIdx] = useState(0);
-  const [scrollOffset, setScrollOffset] = useState(0);
-  const yearRef = useRef(null);
-  const expCardsRef = useRef(null);
   const { year, experiences } = experiencesByYear[activeIdx];
 
 
-  
-  useEffect(() => {
-    const updateCards = () => {
-      if (!expCardsRef.current) return;
-      const rect = expCardsRef.current.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const offset = Math.min(Math.max(-rect.top, 0), vh);
-      const translateY = offset * 0.1;
-      setCardsStyle({ transform: `translateY(${translateY}px)` })
-      setScrollOffset(offset);
-    };
-
-    const onScroll = () => requestAnimationFrame(updateCards);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    updateCards();
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
-
-  // Parallax year only
-  useEffect(() => {
-    const updateYears = () => {
-      if (!yearRef.current) return;
-      const rect = yearRef.current.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const offset = Math.min(Math.max(-rect.top, 0), vh);
-      const translateY = offset * 0.5;
-      const scale = 1 - Math.min(offset / (vh * 3), 0.1);
-      setYearStyle({ transform: `translateY(${translateY}px) scale(${scale})` });
-    };
-    const onScroll = () => requestAnimationFrame(updateYears);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    updateYears();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [activeIdx]);
-
-  const prev = () =>
-    setActiveIdx((i) => (i - 1 + experiencesByYear.length) % experiencesByYear.length);
-  const next = () => setActiveIdx((i) => (i + 1) % experiencesByYear.length);
+  const prev = () => setActiveIdx((idx) => (i - 1 + experiencesByYear.length) % experiencesByYear.length);
+  const next = () => setActiveIdx((idx) => (i + 1) & experiencesByYear.length);
 
   return (
-    <motion.div 
-      variants={pageVariants}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      transition={{ duration: 0.6, ease: "easeInOut" }}
-      className="exp_cont flex flex-col justify-between items-center mt-48 mx-28 gap-8"
-    >
+    <div className="exp_cont flex flex-col items-center justify-center gap-20 w-full overflow-hidden mt-32">
       <h2 className="port_header font-montserrat font-extrabold text-headingPort uppercase text-text_content2 a3s:w-screen text-center text-headingExpMobile">
-        Charting Career Milestones
+        Drive Down Career Lane
       </h2>
 
-      <div className="carousel_btns flex items-center gap-4">
-        <button onClick={prev} aria-label="Previous Year" className="carouselBtn">
-          <img src="./svgs/Left.svg" alt="Left" className="carouselSVG" />
-        </button>
-
-        <section className="year_section a3s:px-8">
-          <div className="year_inner" ref={yearRef} style={yearStyle}>
-            <span className="year_label font-montserrat font-bold text-yearLabel text-text_content2 a3s: text-yearLabelMobile">
-              {year}
-            </span>
-          </div>
-        </section>
-
-        <button onClick={next} aria-label="Next Year" className="carouselBtn">
-          <img src="./svgs/Right.svg" alt="Right" className="carouselSVG" />
-        </button>
+      {/*Horizontal Road*/}
+       <div className="relative w-full max-w-6xl h-2 bg-primary rounded-full mb-8">
+        {/* Years */}
+        <div className="absolute flex justify-between items-center w-full -top-5">
+          {experiencesByYear.map((y, idx) => (
+            <motion.div
+              key={y.year}
+              onClick={() => setActiveIdx(idx)}
+              className="cursor-pointer flex flex-col items-center"
+              whileHover={{ scale: 1.1 }}
+            >
+              <motion.div
+                className={`w-10 h-10 rounded-full border-4 ${
+                  idx === activeIdx ? "bg-highlight border-text_content2" : "bg-text_content2 border-highlight"
+                }`}
+                animate={{
+                  scale: idx === activeIdx ? 1.4 : 1,
+                  y: idx === activeIdx ? -8 : 0,
+                }}
+                transition={{ type: "spring", stiffness: 300 }}
+              />
+              <span
+                className={`mt-2 font-bold text-yearLabel ${
+                  idx === activeIdx ? "text-secondary" : "text-text_content2"
+                }`}
+              >
+                {y.year}
+              </span>
+            </motion.div>
+          ))}
+        </div>
       </div>
 
-      <section className="exp_cards visible" ref={expCardsRef} style={cardsStyle}>
-        {experiences.map((exp, i) => {
-          const scale = 1 - Math.min(scrollOffset / (window.innerHeight * 3), 0.1);
-          const textStyle = {
-            transform: `scale(${scale})`, 
-            transitionDelay: 'transform 0.2 ease-in',
-          };
-          return (
-            <div
-              key={i}
-              className="exp_content flex flex-col items-center justify-center"
-            >
-              <div className="cards_overLay" />
-              <div className="title_wrapper" 
-              style={{
-                transitionDelay: `${i * 70}ms`
-              }} 
-                >
-                <h3 className="font-montserrat font-black tracking-wider text-expContent text-text_content2 text-white a3s:text-expTitleMob" style={textStyle}>
-                  {exp.title}
-                </h3>
-              </div>
-            </div>
-          );
-        })}
-      </section>
-    </motion.div>
+      {/* Experience content by year */}
+      <motion.div
+        key={year}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="flex flex-col items-center space-y-2 mb-16"
+      >
+        <h3 className="text-3xl font-bold text-yearLabel2 text-text_content2 mb-8">{year}</h3>
+        <ul className="space-y-4 text-secondary text-expContent font-nunito text-center">
+          {experiences.map((exp, i) => (
+            <li key={i} >{exp.title}</li>
+          ))}
+        </ul>
+      </motion.div>
+    </div>
   );
 };
 

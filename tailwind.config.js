@@ -53,9 +53,10 @@ module.exports = {
         body: "10px",
         buttons: "20px",
         note: "15px",
-        yearLabel: "320px",
+        yearLabel: "16px",
+        yearLabel2: "40px",
         yearLabelMobile: "100px",
-        expContent: "50px",
+        expContent: "20px",
         expTitleMob: "25px",
       },
       fontWeight: {
