@@ -6,51 +6,57 @@ const Experience = () => {
     {
       year: 2025,
       experiences: [
-        { title: "Designed Ephemeral and currently in development" },
-        { title: "Designing Metal Gear Seekers" },
-        { title: "Designed ArchiTech Vault" },
-        { title: "Developed ArchiTech Vault using NEXT.JS" },
-        { title: "Finished G-Tara App for first defense" },
-        { title: "Designed revisions for my current website" },
+        { title: "Designed and developed revisions for my current website" },
+        { title: "Designing Metal Gear Seekers (computer e-commerce app)" },
+        { title: "Designed Ephemeral and is currently in development" },
         { title: "Designed Transient App (mobile book app)" },
+        { title: "Developed a website using PHP for our Smart Water Tank prototype" },
+        { title: "Developed ArchiTech Vault using NEXT.JS" },
+        { title: "Finished G-TaraNa! App for first thesis defense" },
+        { title: "Finished Designing ArchiTech Vault (ATV) using Figma" },
       ],
     },
     {
       year: 2024,
       experiences: [
-        { title: "Published Countless Websites for Telecall Laguna" },
-        { title: "Improved my Photoshop Skills" },
-        { title: "Learned Illustrator and Premiere Pro" },
+        { title: "Started Designing ArchiTech Vault (ATV) using Figma" },
+        { title: "Designed/Published G-TaraNa! App using REACT NATIVE" },
+        { title: "Worked as a REACT JS Frontend Developer for Lexmeet Inc." },
+        { title: "Designed & Published Revizio App using REACT NATIVE" },
         { title: "Established a YouTube Channel" },
-        { title: "Designed/Published Revizio App using REACT NATIVE" },
-        { title: "Designed/Published G-Tara App using REACT NATIVE" },
+        { title: "Learned Illustrator and Premiere Pro" },
+        { title: "Improved my Photoshop Skills" },
+        { title: "Published Several Websites for Telecall Laguna" },
       ],
     },
     {
       year: 2023,
       experiences: [
-        { title: "Cisco Networking Introduction" },
+        { title: "Finished Cisco's CCNA: Introduction to Networks & CCNA: Switching, Routing, and Wireless Essentials" },
+        { title: "Performed multiple multimedia designing for (Marvill Web Development)" },
+        { title: "WordPress Projects for Internship (Marvill Web Development)" },
         { title: "Created a Notes App for Mobile Development Course" },
-        { title: "WordPress Projects for Internship" },
-        { title: "Designed Several Logos for the Company (Marvill Web Development)" },
       ],
     },
     {
       year: 2022,
       experiences: [
-        { title: "Learned C# Basics" },
-        { title: "Unity Engine Game Development" },
+        { title: "Developed the first version of my Personal Website w/ Vanilla HTML, CSS & JS" },
+        { title: "Started my experience with Web Development using Vanilla HTML, CSS & JS" },
         { title: "Deep Dive in Python with Data Structures and Algorithm" },
-        { title: "Web Development Introduction" },
+        { title: "Developed a game titled Barka (an RPG based game w/ Unity Engine)" },
+        { title: "Finished Unity Game Course from Unity Learn" },
+        { title: "Explored C++ Basics as well" },
+        { title: "Learned C# Basics" },
       ],
     },
     {
       year: 2021,
       experiences: [
-        { title: "Learned Python Basics" },
-        { title: "Created a QR Scanner (JSON)" },
-        { title: "Learned OOP Basics" },
+        { title: "Deep Dive in Python with Object Oriented Programming" },
         { title: "Learned R for Data Analysis" },
+        { title: "Created a QR Scanner that is encoded in a (JSON)" },
+        { title: "Learned Python Basics" },
       ],
     },
   ];
@@ -70,8 +76,18 @@ const Experience = () => {
   const { year, experiences } = experiencesByYear[activeIdx];
 
 
-  const prev = () => setActiveIdx((idx) => (i - 1 + experiencesByYear.length) % experiencesByYear.length);
-  const next = () => setActiveIdx((idx) => (i + 1) & experiencesByYear.length);
+  const prev = () => setActiveIdx((idx) => (idx - 1 + experiencesByYear.length) % experiencesByYear.length);
+  const next = () => setActiveIdx((idx) => (idx + 1) % experiencesByYear.length);
+
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    };
+
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, []);
 
   return (
     <div className="exp_cont flex flex-col items-center justify-center gap-20 w-full overflow-hidden mt-32">
