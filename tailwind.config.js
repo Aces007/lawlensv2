@@ -6,11 +6,9 @@ module.exports = {
   ],
   theme: {
     screens: {
-      a3s: {min:"360px"},
-      sm: "412px",    // small phones
-      md: "768px",    // tablets
-      lg: "1024px",   // laptops
-      xl: "1280px",   // desktops
+      resSm: { min: "360px", max: "767px" },      // regular phones
+      resMd: { min: "768px", max: "1366px" },     // tablets
+      resLg: { min: "1280px" },                    // laptops and desktops (1280px and above)
     },
     extend: {
       colors: {
