@@ -16,12 +16,19 @@ const panelNodes = [
 ];
 
 const NavigationPanel = () => {
-  // -- CONTAINERS -- //
-
-  // -- TEXTS -- //
-
-
-    // -- FLEX STYLING -- //
+  // -- CONTAINERS AND ELEMENTS -- //
+  const logo_container = "fixed top-6 left-6 resMd:left-12 resLg:left-16 z-50";
+  const logo_image = "w-8 resMd:w-10 resLg:w-11 brightness-0 invert transition-transform duration-300 group-hover:scale-105";
+  const nav_panel = "fixed bottom-6 resMd:bottom-8 left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ease-out";
+  const panel_container = "relative flex items-center gap-3 resSm:gap-4 resMd:gap-10 resLg:gap-14 px-4 resSm:px-5 resMd:px-8 resLg:px-10 py-2.5 resMd:py-3.5 bg-dark_background backdrop-blur-md rounded-full border border-white/10 shadow-2xl";
+  const panel_container_mobile = "flex resMd:hidden resLg:hidden p-2 rounded-full transition-all duration-300";
+  const panel_line_graphic = "hidden resMd:block resLg:block absolute left-10 right-10 top-1/2 -translate-y-1/2 h-[1px] bg-white/20 -z-0";
+  const panel_nodes = "relative z-10 flex flex-col items-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg";
+  const panel_nodes_arrow = "w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[5px] border-t-white mb-1 transition-all duration-300";
+  const panel_nodes_dot = "w-2.5 h-2.5 rounded-full transition-all duration-300";
+  const panel_nodes_label = "text-[11px] font-medium tracking-widest uppercase mt-2 transition-colors duration-400";
+    
+  // -- FLEX STYLING -- //
     const center_element_col = "flex flex-col items-center";
     const start_element_col = "flex flex-col items-start";
     const center_element_row = "flex items-center";
@@ -74,12 +81,12 @@ const NavigationPanel = () => {
 
   return (
     <>
-      <div className="fixed top-6 left-6 resMd:left-12 resLg:left-16 z-50">
+      <div className={logo_container}>
         <a href="#hero" className="group block focus:outline-none" aria-label="Go to Home">
           <img
             src="/brand.png"
             alt="Lawrence Brand Mark"
-            className="w-8 resMd:w-10 resLg:w-11 brightness-0 invert transition-transform duration-300 group-hover:scale-105"
+            className={logo_image}
           />
         </a>
       </div>
@@ -88,17 +95,17 @@ const NavigationPanel = () => {
       <nav
         aria-label="Bottom Navigation Dock"
         aria-hidden={!isScrolling}
-        className={`fixed bottom-6 resMd:bottom-8 left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ease-out ${
+        className={`${nav_panel} ${
           isScrolling
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 translate-y-6 pointer-events-none"
         }`}
       >
         {/* Dock Container */}
-        <div className="relative flex items-center gap-3 resSm:gap-4 resMd:gap-10 resLg:gap-14 px-4 resSm:px-5 resMd:px-8 resLg:px-10 py-2.5 resMd:py-3.5 bg-[#121217]/85 backdrop-blur-md rounded-full border border-white/10 shadow-2xl">
+        <div className={panel_container}>
           
           {/* Timeline Connector Line (Tablets & Desktops) */}
-          <div className="hidden resMd:block resLg:block absolute left-10 right-10 top-1/2 -translate-y-1/2 h-[1px] bg-white/20 -z-0" />
+          <div className={panel_line_graphic} />
 
           {panelNodes.map((node) => {
             const Icon = node.icon;
@@ -110,32 +117,32 @@ const NavigationPanel = () => {
                 href={`#${node.id}`}
                 tabIndex={isScrolling ? 0 : -1}
                 aria-current={isActive ? "page" : undefined}
-                className="relative z-10 flex flex-col items-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg"
+                className={panel_nodes}
               >
                 {/* ── Tablet & Desktop View (Text + Indicator Nodes) ── */}
                 <div className="hidden resMd:flex resLg:flex flex-col items-center">
                   {/* Indicator Arrow */}
                   <div
-                    className={`w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[5px] border-t-white mb-1 transition-all duration-300 ${
+                    className={`${panel_nodes_arrow} ${
                       isActive ? "scale-100 opacity-100" : "scale-0 opacity-0"
                     }`}
                   />
 
                   {/* Node Dot */}
                   <div
-                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                    className={`${panel_nodes_dot} ${
                       isActive
-                        ? "bg-white ring-4 ring-white/30 scale-125"
-                        : "bg-white/40 group-hover:bg-white group-hover:scale-110"
+                        ? "bg-background ring-4 ring-dark_background scale-125"
+                        : "bg-background group-hover:bg-highlight group-hover:scale-110"
                     }`}
                   />
 
                   {/* Label */}
                   <span
-                    className={`text-[11px] font-medium tracking-widest uppercase mt-2 transition-colors duration-300 ${
+                    className={`${panel_nodes_label} ${
                       isActive
-                        ? "text-white font-bold"
-                        : "text-white/40 group-hover:text-white/80"
+                        ? "text-dark_primary font-extrabold"
+                        : "text-dark_primary group-hover:text-highlight"
                     }`}
                   >
                     {node.label}
@@ -144,10 +151,10 @@ const NavigationPanel = () => {
 
                 {/* ── Mobile View (Icons Only) ── */}
                 <div
-                  className={`flex resMd:hidden resLg:hidden p-2 rounded-full transition-all duration-300 ${
+                  className={`${panel_container_mobile} ${
                     isActive
-                      ? "text-white bg-white/15 scale-110"
-                      : "text-white/40 hover:text-white"
+                      ? "text-dark_primary bg-dark_background scale-110"
+                      : "text-dark_primary hover:text-highlight"
                   }`}
                 >
                   <Icon size={20} />
