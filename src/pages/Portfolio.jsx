@@ -84,7 +84,7 @@ const Portfolio = () => {
     const spe_effect = "absolute top-1/4 left-1/3s w-[500px] h-[500px] bg-dark_highlight/10 rounded-full blur-[140px] pointer-events-none -z-10"
     
     const preview_grid_cont = "grid grid-cols-1 resMd:grid-cols-12 resLg:grid-cols-12 gap-8 items-center flex-1 resSm:py-28";
-    const left_grid = "resLg:col-span-6 resMd:col-span-6 flex flex-col items-start justify-center space-y-4 "
+    const left_grid = "resLg:col-span-6 resMd:col-span-6 flex flex-col items-start justify-center space-y-4"
 
     const id_text = "font-montserrat font-[800] text-[24px] tracking-wider text-dark_highlight"
     const tag_text = "font-nunito font-[600] text-[16px] tracking-wide text-dark_secondary"
