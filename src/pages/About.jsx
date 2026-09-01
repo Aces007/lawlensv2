@@ -27,19 +27,19 @@ const About = () => {
     const between_element_row = "flex justify-between";
 
     // -- CONTAINERS AND ELEMENTS -- //
-    const about_container = "w-full h-full min-h-[100dvh] flex flex-col justify-around items-center gap-16 py-40 select-none overflow-hidden resSm:gap-[32px] resSm:py-28";
+    const about_container = "relative w-full h-full min-h-[100dvh] flex flex-col justify-between items-center gap-2 py-24 select-none overflow-hidden max-w-7xl mx-auto resMd:py-24";
     
     const about_head = "gap-[32px]"
     const about_h1 = "font-nunito font-[800] text-[28px] text-dark_primary resSm:text-center resSm:text-[20px]";
     const about_h2 = "font-montserrat font-medium text-[20px] text-dark_secondary resSm:text-center resSm:text-[14px]";
 
-    const about_photos_cont = "w-full max-w-4xl flex justify-center items-center my-4 overflow-visible border border-white-400";
+    const about_photos_cont = "w-full max-w-4xl flex justify-center items-center my-4 overflow-visible";
     const about_photos = "hidden resMd:flex resLg:flex items-center justify-center -space-x-8 resLg:-space-x-10"
     const about_photos_stack = "relative z-10 p-3 pb-8 bg-[#f5f5f5] text-dark_primary shadow-2xl rounded-sm transition-transform duration-300 w-44 resLg:w-48 cursor-pointer"
     const photos_styling = "w-full h-full object-cover contrast-125 transition-all duration-500";
     const photos_labelling = "font-nunito font-[600] text-center text-[16px] tracking-wide uppercase mt-[8px] text-dark_secondary";
 
-    const about_photos_cont_mob = "w-64 h-80 resMd:hidden resLg:hidden";
+    const about_photos_cont_mob = "w-[210px] h-[260px] resMd:hidden resLg:hidden";
     const about_photos_stack_mob = "w-full h-full p-3 pb-8 bg-[#f5f5f5] text-dark_primary shadow-2xl"
     const photos_styling_mob = "w-full h-full object-cover contrast-125 transition-all duration-500";
     const photos_labelling_mob = "font-nunito font-[600] text-center text-[12px] tracking-wide uppercase mt-[8px] text-dark_secondary";
@@ -55,7 +55,7 @@ const About = () => {
                     <h2 className={about_h2}>If it has a power button, it's probably my problem</h2>
                 </div>
 
-                <div classname={`${about_photos_cont} `}>
+                <div className={`${about_photos_cont} `}>
                     <div className={`${about_photos}`}>
                         {polaroids.map((item, idx) => (
                             <motion.div
