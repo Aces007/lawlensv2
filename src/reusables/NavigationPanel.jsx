@@ -7,13 +7,13 @@ import {
   HiOutlineMail 
 } from "react-icons/hi";
 
-const panelNodes = [
-  { id: "hero", label: "Home", icon: HiOutlineHome },
-  { id: "about", label: "About", icon: HiOutlineUser },
-  { id: "experience", label: "Experience", icon: HiOutlineBriefcase },
-  { id: "portfolio", label: "Portfolio", icon: HiOutlineFolder },
-  { id: "contact", label: "Contact", icon: HiOutlineMail },
-];
+  const panelNodes = [
+    { id: "hero", label: "Home", icon: HiOutlineHome },
+    { id: "about", label: "About", icon: HiOutlineUser },
+    { id: "experience", label: "Experience", icon: HiOutlineBriefcase },
+    { id: "portfolio", label: "Portfolio", icon: HiOutlineFolder },
+    { id: "contact", label: "Contact", icon: HiOutlineMail },
+  ];
 
 const NavigationPanel = () => {
   // -- CONTAINERS AND ELEMENTS -- //
@@ -51,7 +51,7 @@ const NavigationPanel = () => {
 
       scrollTimeoutRef.current = setTimeout(() => {
         setIsScrolling(false);
-      }, 1800);
+      }, 500);
     };
 
     mainSection.addEventListener("scroll", handleScroll, { passive: true });

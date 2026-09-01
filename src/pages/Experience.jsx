@@ -2,62 +2,93 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Autoplay, Pagination } from "swiper/modules";
+import { span } from "framer-motion/client";
 
 const workExperience = [
   {
     id: "01",
     role: "Tech Admin",
     company: "Silverback Disruptives Web Design",
-    period: "January 2026 - Present",
-    type: "Full-Time / Hybrid",
-    focus: "Web Development, Network & Systems Administration, Printers & Machine Operation",
+    period: "Jan 2026 - Present",
+    type: "Full-Time",
     bullets: [
-      "Managed network infrastructure, web development projects, and hardware maintenance.",
-      "Handled technical debugging and machine/printer operations across departments."
+      "Administer multi-node TP-Link Deco mesh Wi-Fi, TAPO/VIGI CCTV surveillance, and Synology NAS servers across local networks.",
+      "Manage StoreHub POS, Cloudbeds, and OTA booking channels (Booking.com, Airbnb, Trip.com, Xendit) with zero transaction downtime.",
+      "Maintain production web platforms (LasCalas & Altiva), DreamHost domain/email routing, and Bitwarden enterprise access control.",
+      "Diagnose and repair hardware infrastructure, Cat6 cabling, Inrico PTT dispatchers, laser cutters, and production printers."
     ],
-    tech: ["Web Development", "Network Admin", "Hardware Troubleshooting"],
+    tech: [
+      "Deco Mesh",
+      "StoreHub POS",
+      "Cloudbeds",
+      "Synology NAS",
+      "TAPO / VIGI",
+      "DreamHost",
+      "Cat6 / Hardware"
+  ],
     documentation: [],
   },
   {
     id: "02",
     role: "Frontend Developer",
     company: "Lexmeet Inc.",
-    period: "August 2024 - September 2024",
+    period: "Aug 2024 - Sep 2024",
     type: "Internship",
-    focus: "Law Services, Digital Client Communications",
     bullets: [
-      "Assisted in building responsive frontend layouts for legal tech services.",
-      "Optimized client-facing components for seamless digital communication."
+      "Engineered responsive, accessible web interfaces for legal tech services using React, SASS, and Bootstrap.",
+      "Designed high-fidelity UI/UX mockups, design systems, and digital assets in Figma, Photoshop, and Illustrator.",
+      "Collaborated across cross-functional teams to build and deploy the firm's official web platform on Vercel.",
+      "Managed Git/GitLab version control workflows, including code reviews, pull requests, and branch merging."
     ],
-    tech: ["React.js", "Tailwind CSS", "Frontend UI"],
+    tech: [
+      "React.js",
+      "Figma",
+      "SASS",
+      "Bootstrap",
+      "GitLab / Git",
+      "Vercel",
+      "Adobe CC"
+    ],
     documentation: [],
   },
   {
     id: "03",
     role: "Web Designer",
     company: "TELECALL Laguna",
-    period: "April 2024 - May 2024",
-    type: "Training / Affiliate",
-    focus: "TESDA Affiliate, Creative Web Design Course",
+    period: "Apr 2024 - May 2024",
+    type: "Training",
     bullets: [
       "Completed intensive creative web design modules under TESDA affiliation.",
       "Designed clean layouts and digital assets focusing on UX principles."
     ],
-    tech: ["UI/UX Design", "Figma", "HTML/CSS"],
+    tech: [
+      "UI/UX Design", 
+      "Figma", 
+      "HTML/CSS"
+    ],
     documentation: [],
   },
   {
     id: "04",
-    role: "UI/UX Designer, Digital Creator",
+    role: "UI/UX & Content Creation",
     company: "Marvill Web Development",
-    period: "August 2023 - September 2023",
-    type: "Contract",
-    focus: "UI/UX Designing, Wordpress Publishing, Vector Creation, Marketing",
+    period: "Aug 2023 - Sep 2023",
+    type: "Internship",
     bullets: [
-      "Created custom vector illustrations and marketing graphic assets.",
-      "Managed WordPress site publishing and interface layout structures."
+      "Designed and developed responsive client web interfaces and content layouts using WordPress.",
+      "Created vector logos, brand trademarks, and photo-manipulated creative assets using Adobe Illustrator and Photoshop.",
+      "Produced commercial product advertisements and marketing collateral using Canva and Photoshop.",
+      "Brainstormed multimedia content strategies and edited promotional video deliverables in Adobe Premiere."
     ],
-    tech: ["WordPress", "Vector Creation", "UI/UX", "Marketing"],
+    tech: [
+      "WordPress",
+      "Adobe Illustrator",
+      "Adobe Photoshop",
+      "Adobe Premiere",
+      "Canva",
+      "UI/UX Design",
+      "Branding"
+  ],
     documentation: [],
   },
 ];
@@ -65,8 +96,6 @@ const workExperience = [
 const Experience = () => {
   const [selectedWork, setSelectedWork] = useState(0);
   const currentWork = workExperience[selectedWork];
-  
-  // Fixed: checking 'documentation' instead of non-existent 'images'
   const hasImages = Array.isArray(currentWork.documentation) && currentWork.documentation.length > 0;
 
   const handleKeyDown = (e, index) => {
@@ -84,98 +113,107 @@ const Experience = () => {
   };
 
   const pageVariants = {
-    unmounted: { opacity: 0, y: 20 },
+    unmounted: { opacity: 0, y: 10 },
     mounted: { opacity: 1, y: 0 },
-    beingUnmounted: { opacity: 0, y: -20 },
+    beingUnmounted: { opacity: 0, y: -10 },
   };
 
-  // -- CONTAINERS AND ELEMENTS -- //
-  const exp_cont = "relative w-full h-full flex flex-col px-6 resMd:px-24 overflow-hidden py-32 justify-between max-w-7xl mx-auto min-h-[100dvh]";
-  const spe_effect = "absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-dark_highlight/10 rounded-full blur-[140px] pointer-events-none -z-10";
-
-  const main_cont = "w-full flex-1 flex flex-col justify-center my-auto";
-  const tabPanel_cont = "w-full rounded-2xl bg-[#13131b]/85 border border-white/35 backdrop-blur-md p-5 resSm:p-7 resMd:p-8 shadow-2xl focus:outline-none focus:ring-1 focus:ring-white/20";
-
-  const tag_cont = "flex flex-wrap items-center justify-between gap-4 mb-4";
-  const item_count_cont = "font-montserrat font-extrabold text-dark_highlight text-lg resSm:text-xl";
-  const type_cont = "px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs sm:text-sm text-dark_primary";
-  const role_cont = "text-xl resSm:text-2xl resMd:text-3xl font-montserrat font-bold text-dark_primary leading-snug";
-  const company_cont = "text-sm resSm:text-lg resMd:text-xl font-nunito font-semibold text-dark_secondary mt-1";
-  const responsibilities_cont = "space-y-2 py-2 text-xs sm:text-sm font-nunito text-dark_secondary/90 list-none";
-  const stack_cont = "flex flex-wrap gap-2 pt-3 border-t border-white/5";
-  const stack_styling = "px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[10px] resSm:text-xs font-nunito font-medium text-dark_secondary/80 uppercase tracking-wider";
-
-  const documentation_photos_cont = "resLg:col-span-5 w-full h-[190px] sm:h-[220px] rounded-xl overflow-hidden border border-white/10 relative bg-dark_background";
-
-  const workExperience_selector = "grid grid-cols-2 resMd:grid-cols-4 gap-3 w-full pt-4";
-  const tabNavigator = "p-3 resSm:p-4 rounded-xl text-left transition-all duration-300 border focus:outline-none focus:ring-2 focus:ring-dark_highlight";
-  const ifTabActive = "bg-white/10 border-white/30 shadow-lg scale-[1.01] opacity-100";
-  const ifTabNotActive = "bg-white/5 border-white/5 hover:border-white/20 hover:bg-white/[0.07] opacity-60 hover:opacity-90";
-
   return (
-    <section id="experience" aria-labelledby="experience-heading" className={exp_cont}>
+    <section
+      id="experience"
+      aria-labelledby="experience-heading"
+      className="relative w-full h-[100dvh] flex flex-col justify-between px-4 sm:px-8 resMd:px-16 resLg:px-24 pt-16 pb-20 resMd:py-20 select-none overflow-hidden max-w-7xl mx-auto"
+    >
       <h2 id="experience-heading" className="sr-only">Work Experience</h2>
-      <div className={spe_effect} />
 
-      <div className={main_cont}>
+      {/* ── Ambient Radial Glow ── */}
+      <div
+        aria-hidden="true"
+        className="absolute top-1/4 left-1/3 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-dark_highlight/10 rounded-full blur-[120px] pointer-events-none -z-10"
+      />
+
+      {/* ── Top Main Stage: Role Details ── */}
+      <div className="w-full flex-1 flex flex-col justify-center my-auto min-h-0">
         <AnimatePresence mode="wait">
           <motion.article
             key={currentWork.id}
             id={`exp-panel-${selectedWork}`}
             role="tabpanel"
+            aria-labelledby={`exp-tab-${selectedWork}`}
             tabIndex={0}
             variants={pageVariants}
             initial="unmounted"
             animate="mounted"
             exit="beingUnmounted"
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className={tabPanel_cont}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="w-full max-h-[56dvh] resMd:max-h-none overflow-y-auto rounded-2xl bg-[#13131b]/90 border border-white/10 backdrop-blur-md p-4 sm:p-6 resMd:p-8 shadow-2xl focus:outline-none"
           >
-            <div className={tag_cont}>
-              <div className="flex items-center gap-3">
-                <span className={item_count_cont}>{currentWork.id}</span>
-                <span className="w-6 h-[2px] bg-white/20" />
-                <time className="text-xs sm:text-sm text-dark_secondary font-nunito">{currentWork.period}</time>
+            {/* Tag Header */}
+            <div className="flex items-center justify-between gap-2 mb-2 sm:mb-3">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <span className="font-montserrat font-extrabold text-dark_highlight text-xs sm:text-sm">
+                  {currentWork.id}
+                </span>
+                <span className="w-4 sm:w-6 h-[1px] bg-white/20" />
+                <time className="text-[10px] sm:text-xs text-dark_secondary font-nunito">{currentWork.period}</time>
               </div>
-              <span className={type_cont}>{currentWork.type || "Professional"}</span>
+              <span className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[9px] sm:text-[10px] text-dark_primary uppercase tracking-wider">
+                {currentWork.type}
+              </span>
             </div>
 
-            <div className={`grid gap-6 items-center ${hasImages ? "grid-cols-1 resLg:grid-cols-12" : "grid-cols-1"}`}>
-              <div className={hasImages ? "resLg:col-span-7 space-y-3" : "w-full space-y-3"}>
+            {/* Split Content Grid */}
+            <div className={`grid gap-4 items-center ${hasImages ? "grid-cols-1 resLg:grid-cols-12" : "grid-cols-1"}`}>
+              <div className={hasImages ? "resLg:col-span-7 space-y-2" : "w-full space-y-2"}>
                 <header>
-                  <h3 className={role_cont}>{currentWork.role}</h3>
-                  <p className={company_cont}>{currentWork.company}</p>
+                  <h3 className="text-base sm:text-xl resMd:text-2xl font-montserrat font-bold text-dark_primary leading-tight">
+                    {currentWork.role}
+                  </h3>
+                  <p className="text-[11px] sm:text-xs resMd:text-sm font-nunito font-semibold text-dark_secondary mt-0.5">
+                    {currentWork.company}
+                  </p>
                 </header>
 
-                <ul className={responsibilities_cont}>
-                  {currentWork.bullets.map((point, index) => (
-                    <li key={index} className="flex items-start gap-2.5">
-                      <span className="text-dark_highlight font-bold">•</span>
+                {/* Bullets (Always visible on mobile now) */}
+                <ul className="space-y-1.5 py-1 text-[11px] sm:text-xs resMd:text-sm font-nunito text-dark_secondary/90 leading-relaxed list-none">
+                  {currentWork.bullets.map((point, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <span className="text-dark_highlight font-bold mt-0.5">•</span>
                       <span>{point}</span>
                     </li>
                   ))}
                 </ul>
 
-                <div className={stack_cont}>
-                  {currentWork.tech.map((stack, index) => (
-                    <span key={index} className={stack_styling}>
+                {/* Tech Pills */}
+                <div className="flex flex-wrap gap-1.5 pt-1.5 border-t border-white/5">
+                  {currentWork.tech.map((stack, idx) => (
+                    <span
+                      key={idx}
+                      className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[9px] sm:text-[10px] font-nunito font-medium text-dark_secondary/80 uppercase tracking-wider"
+                    >
                       {stack}
                     </span>
                   ))}
                 </div>
               </div>
 
+              {/* Documentation Swiper (Rendered only if images exist) */}
               {hasImages && (
-                <div className={documentation_photos_cont}>
+                <div className="resLg:col-span-5 w-full h-[140px] sm:h-[180px] rounded-xl overflow-hidden border border-white/10 relative bg-dark_background">
                   <Swiper
-                    modules={[Pagination, Autoplay, A11y]} // Fixed: Array syntax instead of object
+                    modules={[Pagination, Autoplay, A11y]}
                     pagination={{ clickable: true }}
                     autoplay={{ delay: 3500, disableOnInteraction: true }}
                     className="w-full h-full"
                   >
-                    {currentWork.documentation.map((imgSrc, index) => (
-                      <SwiperSlide key={index} className="w-full h-full bg-dark_background">
-                        <img src={imgSrc} alt="Documentation preview" className="w-full h-full object-cover brightness-90 contrast-110" loading="lazy" />
+                    {currentWork.documentation.map((imgSrc, idx) => (
+                      <SwiperSlide key={idx} className="w-full h-full bg-dark_background">
+                        <img
+                          src={imgSrc}
+                          alt={`${currentWork.company} documentation preview`}
+                          className="w-full h-full object-cover brightness-90"
+                          loading="lazy"
+                        />
                       </SwiperSlide>
                     ))}
                   </Swiper>
@@ -186,32 +224,42 @@ const Experience = () => {
         </AnimatePresence>
       </div>
 
-      <div role="tablist" aria-label="Work Experience Navigation" className={workExperience_selector}>
+      <span className="font-nunito text-14px resSm:text-[12px] text-dark_primary/70">Click on the tabs for navigation</span>
+      
+      {/* ── Bottom Tab Navigator (Single row on mobile, Grid on desktop) ── */}
+      <div
+        role="tablist"
+        aria-label="Work Experience Navigation"
+        className="grid grid-cols-4 gap-1.5 sm:gap-3 w-full pt-3 flex-shrink-0 z-10"
+      >
         {workExperience.map((exp, index) => {
           const isActive = index === selectedWork;
 
           return (
             <button
               key={exp.id}
-              id={`exp-tab-${index}`} // Fixed: added hyphen to match getElementById lookup
+              id={`exp-tab-${index}`}
               role="tab"
               aria-selected={isActive}
               aria-controls={`exp-panel-${index}`}
               tabIndex={isActive ? 0 : -1}
               onKeyDown={(e) => handleKeyDown(e, index)}
               onClick={() => setSelectedWork(index)}
-              // Fixed: removed extra inner curly braces around class variables
-              className={`${tabNavigator} ${isActive ? ifTabActive : ifTabNotActive}`}
+              className={`p-2 sm:p-3 rounded-xl text-left transition-all duration-300 border focus:outline-none ${
+                isActive
+                  ? "bg-white/10 border-white/30 shadow-md scale-[1.01] opacity-100 ring-1 ring-white/20"
+                  : "bg-white/5 border-white/5 hover:border-white/20 opacity-50 hover:opacity-80"
+              }`}
             >
               <div className="flex items-center justify-between pointer-events-none">
-                <span className="text-[11px] sm:text-xs font-montserrat font-black text-dark_highlight">
+                <span className="text-[10px] sm:text-xs font-montserrat font-black text-dark_highlight">
                   {exp.id}
                 </span>
-                <span className="text-[9px] sm:text-[10px] font-nunito text-dark_secondary font-semibold">
+                <span className="hidden sm:inline text-[9px] font-nunito text-dark_secondary font-semibold">
                   {exp.period.split("-")[0].trim()}
                 </span>
               </div>
-              <h4 className="text-xs sm:text-sm font-montserrat font-bold text-white tracking-wide mt-1 truncate pointer-events-none">
+              <h4 className="text-[10px] sm:text-xs font-montserrat font-bold text-white tracking-tight mt-0.5 truncate pointer-events-none">
                 {exp.role}
               </h4>
             </button>
