@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCards, Navigation } from "swiper/modules";
+import { EffectCards } from "swiper/modules";
 import { motion, AnimatePresence } from "framer-motion";
-import { HiArrowUpRight } from "react-icons/hi2";
+import { HiArrowUpRight, HiChevronUp, HiChevronDown } from "react-icons/hi2";
 
 const notable_projects = [
   {
@@ -75,6 +75,7 @@ const pageVariants = {
 
 const Portfolio = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const swiperRef = useRef(null);
   const projectInDisplay = notable_projects[activeIndex];
 
   // -- FLEX & LAYOUT STYLING -- //
@@ -85,7 +86,6 @@ const Portfolio = () => {
   const port_cont = "relative w-full h-[100dvh] min-h-[100dvh] flex flex-col justify-center px-6 resSm:px-10 resMd:px-16 resLg:px-24 pt-28 pb-24 resMd:py-0 select-none overflow-hidden max-w-7xl mx-auto snap-start";
   const spe_effect = "absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-dark_highlight/10 rounded-full blur-[140px] pointer-events-none -z-10";
 
-  // Enforces 50/50 side-by-side grid on resMd and resLg
   const preview_grid_cont = "grid grid-cols-1 resMd:grid-cols-12 resLg:grid-cols-12 gap-8 resMd:gap-10 resLg:gap-16 items-center w-full my-auto";
   const left_grid = "resMd:col-span-7 resLg:col-span-7 flex flex-col items-start justify-center";
   const right_grid = "resMd:col-span-5 resLg:col-span-5 flex flex-col items-center resMd:items-end justify-center relative";
@@ -102,6 +102,9 @@ const Portfolio = () => {
 
   const swiper_slides_cont = "rounded-[20px] overflow-hidden border border-dark_primary/15 shadow-2xl bg-dark_background";
   const previewImage_styling = "w-full h-full object-cover object-center brightness-90 group-hover:scale-105 transition-transform duration-500 ease-out";
+
+  // Subtle Up/Down Button Base Styling
+  const swiper_slides_nav = "p-1.5 sm:p-2 rounded-full text-dark_primary/60 hover:text-white hover:bg-white/10 transition-all duration-200 disabled:opacity-20 disabled:hover:bg-transparent disabled:hover:text-dark_primary/60 disabled:cursor-not-allowed cursor-pointer";
 
   return (
     <section id="portfolio" aria-label="Portfolio Projects" className={port_cont}>
@@ -159,47 +162,86 @@ const Portfolio = () => {
           </AnimatePresence>
         </div>
 
-        {/* ── Right Column: Swiper Card Deck ── */}
+        {/* ── Right Column: Swiper Card Deck + Subtle Nav ── */}
         <div className={right_grid}>
-          <div className="w-[210px] h-[230px] resSm:w-[200px] resSm:h-[200px] resMd:w-[320px] resMd:h-[360px] resLg:w-[380px] resLg:h-[420px]">
-            <Swiper
-              effect={"cards"}
-              grabCursor={true}
-              modules={[EffectCards, Navigation]}
-              onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-              className="w-full h-full"
-            >
-              {notable_projects.map((item) => (
-                <SwiperSlide key={item.id} className={swiper_slides_cont}>
-                  <div className="relative w-full h-full group bg-dark_background">
-                    {item.previewImage ? (
-                      <img
-                        src={item.previewImage}
-                        alt={item.title}
-                        className={previewImage_styling}
-                      />
-                    ) : (
-                      <div className={`${center_element_col} justify-center w-full h-full p-6 text-center bg-gradient-to-br from-[#1b1b26] to-[#0f0f15]`}>
-                        <span className="text-4xl font-[800] text-dark_primary/10 font-montserrat">
-                          {item.id.padStart(2, "0")}
-                        </span>
-                        <h4 className="text-[12px] font-[600] text-dark_primary/70 mt-4 font-montserrat uppercase tracking-wider">
-                          {item.title}
-                        </h4>
-                      </div>
-                    )}
+          <div className="flex items-center gap-3 sm:gap-5">
+            {/* The Swiper Card Deck */}
+            <div className="w-[200px] h-[220px] resSm:w-[200px] resSm:h-[200px] resMd:w-[320px] resMd:h-[360px] resLg:w-[380px] resLg:h-[420px]">
+              <Swiper
+                effect={"cards"}
+                grabCursor={true}
+                modules={[EffectCards]}
+                onSwiper={(swiper) => {
+                  swiperRef.current = swiper;
+                }}
+                onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+                className="w-full h-full"
+              >
+                {notable_projects.map((item) => (
+                  <SwiperSlide key={item.id} className={swiper_slides_cont}>
+                    <div className="relative w-full h-full group bg-dark_background">
+                      {item.previewImage ? (
+                        <img
+                          src={item.previewImage}
+                          alt={item.title}
+                          className={previewImage_styling}
+                        />
+                      ) : (
+                        <div className={`${center_element_col} justify-center w-full h-full p-6 text-center bg-gradient-to-br from-[#1b1b26] to-[#0f0f15]`}>
+                          <span className="text-4xl font-[800] text-dark_primary/10 font-montserrat">
+                            {item.id.padStart(2, "0")}
+                          </span>
+                          <h4 className="text-[12px] font-[600] text-dark_primary/70 mt-4 font-montserrat uppercase tracking-wider">
+                            {item.title}
+                          </h4>
+                        </div>
+                      )}
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark_background/90 via-transparent to-transparent pointer-events-none" />
-                    
-                    <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end pointer-events-none">
-                      <p className="text-[10px] resMd:text-[11px] font-nunito uppercase tracking-widest text-dark_highlight font-bold">
-                        {item.tag}
-                      </p>
+                      <div className="absolute inset-0 bg-gradient-to-t from-dark_background/90 via-transparent to-transparent pointer-events-none" />
+                      
+                      <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end pointer-events-none">
+                        <p className="text-[10px] resMd:text-[11px] font-nunito uppercase tracking-widest text-dark_highlight font-bold">
+                          {item.tag}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+
+            {/* Subtle Vertical Navigation Pill (Visible across all breakpoints) */}
+            <div className="resSm:hidden flex flex-col items-center justify-center py-2 px-1 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md gap-1.5 shadow-xl select-none z-10">
+              <button 
+                type="button" 
+                onClick={() => swiperRef.current?.slidePrev()} 
+                disabled={activeIndex === 0} 
+                aria-label="Previous project"
+                className={swiper_slides_nav}
+              >
+                <HiChevronUp className="text-sm sm:text-base"/>  
+              </button>
+
+              <div className="flex flex-col items-center text-[9px] sm:text-[10px] py-0.5 select-none font-mono">
+                <span className="text-dark_highlight font-[900]">
+                  {String(activeIndex + 1).padStart(2, "0")}
+                </span>
+                <span className="w-2.5 h-[1px] bg-white/20 my-1"/>
+                <span className="text-white/40">
+                  {String(notable_projects.length).padStart(2, "0")}
+                </span>
+              </div>
+
+              <button 
+                type="button" 
+                onClick={() => swiperRef.current?.slideNext()} 
+                disabled={activeIndex === notable_projects.length - 1} 
+                aria-label="Next project"
+                className={swiper_slides_nav}
+              >
+                <HiChevronDown className="text-sm sm:text-base"/>  
+              </button>
+            </div>
           </div>
         </div>
       </div>
