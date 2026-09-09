@@ -26,7 +26,6 @@ const About = () => {
 
   // -- CONTAINERS AND ELEMENTS -- //
   const about_container = "relative w-full h-full min-h-[100dvh] flex flex-col justify-between items-center py-20 mt-20 select-none overflow-hidden max-w-7xl mx-auto resMd:py-24";
-  
   const about_head = "gap-[16px] text-center";
   const about_h1 = "font-nunito font-[800] text-[28px] text-dark_primary resSm:text-center resSm:text-[20px]";
   const about_h2 = "font-montserrat font-medium text-[20px] text-dark_secondary resSm:text-center resSm:text-[14px]";
